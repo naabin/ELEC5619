@@ -1,0 +1,33 @@
+<div class="modal-header">
+    <h2 class="ui center aligned icon header">Registration</h2>
+    <button class="btn-close close pull-right" (click)="bsModalRef.hide()">&times;</button>
+</div>
+<div class="modal-content">
+    <div class="modal-body">
+        <form [formGroup]="signUpForm" class="ui form">
+            <div class="field">
+                <label>Name</label>
+                <input type="text" name="name" placeholder="Name">
+            </div>
+            <div class="field">
+                <label>Email</label>
+                <input type="email" name="email" placeholder="Email...">
+            </div>
+            <div class="field">
+                <label>Password</label>
+                <input type="password" name="email" placeholder="Password">
+            </div>
+            <div class="field">
+                <label>Confirm Password</label>
+                <input type="password" name="email" placeholder="Password">
+            </div>
+            <div class="field">
+                <div class="ui checkbox">
+                    <input type="checkbox" tabindex="0" class="hidden">
+                    <label>I agree to the Terms and Conditions</label>
+                </div>
+            </div>
+            <button class="ui center aligned button" (click)="bsModalRef.hide()" type="submit">Sign Up</button>
+        </form>
+    </div>
+</div>

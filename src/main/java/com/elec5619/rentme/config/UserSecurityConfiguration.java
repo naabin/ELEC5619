@@ -1,7 +1,6 @@
 package com.elec5619.rentme.config;
 
 
-import com.elec5619.rentme.entities.User;
 import com.elec5619.rentme.service.UserService;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -37,9 +36,9 @@ public class UserSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/").permitAll()
+                .antMatchers("/home").permitAll()
                 .antMatchers("/login").permitAll()
-                .antMatchers("/registration").permitAll()
+                .antMatchers("/signup").permitAll()
                 .anyRequest()
                 .authenticated().and().csrf().disable()
                 .formLogin()

@@ -16,7 +16,13 @@ public class Complaint {
 
     @OneToOne
     @JoinColumn(name = "lender_id")
-    private Lender lender;
+    private User lender;
+
+    @OneToOne
+    @JoinColumn(name = "renter_id")
+    private User renter;
+
+
 
     @Column
     private String complaint;
@@ -37,11 +43,11 @@ public class Complaint {
         this.complainedItem = complainedItem;
     }
 
-    public Lender getLender() {
+    public User getLender() {
         return lender;
     }
 
-    public void setLender(Lender lender) {
+    public void setLender(User lender) {
         this.lender = lender;
     }
 

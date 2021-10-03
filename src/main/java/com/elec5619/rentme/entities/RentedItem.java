@@ -12,12 +12,12 @@ public class RentedItem {
     private String id;
 
     @ManyToOne
-    @JoinColumn
-    private Lender lender;
+    @JoinColumn(name = "lender_id", referencedColumnName = "id")
+    private User lender;
 
     @ManyToOne
-    @JoinColumn(name = "renter", referencedColumnName = "id")
-    private Renter renter;
+    @JoinColumn(name = "renter_id", referencedColumnName = "id")
+    private User renter;
 
     @ManyToOne
     @JoinColumn
@@ -46,19 +46,19 @@ public class RentedItem {
         this.id = rentedItemId;
     }
 
-    public Lender getLender() {
+    public User getLender() {
         return lender;
     }
 
-    public void setLender(Lender lender) {
+    public void setLender(User lender) {
         this.lender = lender;
     }
 
-    public Renter getRenter() {
+    public User getRenter() {
         return renter;
     }
 
-    public void setRenter(Renter renter) {
+    public void setRenter(User renter) {
         this.renter = renter;
     }
 

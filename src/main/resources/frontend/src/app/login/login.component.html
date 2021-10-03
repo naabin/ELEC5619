@@ -1,0 +1,19 @@
+<div class="modal-header">
+    <h2 class="ui center aligned icon header">Login</h2>
+    <button class="btn-close close pull-right" (click)="bsModalRef.hide()">&times;</button>
+</div>
+<div class="modal-content">
+    <div class="modal-body">
+        <form [formGroup]="loginForm" class="ui form">
+            <div class="field">
+                <label>Email or Username</label>
+                <input type="text" name="name" placeholder="Name">
+            </div>
+            <div class="field">
+                <label>Password</label>
+                <input type="password" name="email" placeholder="Password">
+            </div>
+            <button class="ui center aligned button" (click)="bsModalRef.hide()" type="submit">Login</button>
+        </form>
+    </div>
+</div>

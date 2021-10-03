@@ -15,8 +15,8 @@ public class Item {
     private String id;
 
     @ManyToOne
-    @JoinColumn
-    private Lender lender;
+    @JoinColumn(name = "lender_id")
+    private User lender;
 
     @Column
     @NotNull
@@ -49,11 +49,11 @@ public class Item {
         this.id = itemId;
     }
 
-    public Lender getLender() {
+    public User getLender() {
         return lender;
     }
 
-    public void setLender(Lender lender) {
+    public void setLender(User lender) {
         this.lender = lender;
     }
 
