@@ -12,6 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {ModalModule} from 'ngx-bootstrap/modal';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
+import { AdvSearchComponent } from './adv-search/adv-search.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { LoginComponent } from './login/login.component';
     RentNavComponent,
     RentFooterComponent,
     SignupComponent,
-    LoginComponent
+    LoginComponent,
+    AdvSearchComponent
   ],
   imports: [
     ModalModule.forRoot(),
