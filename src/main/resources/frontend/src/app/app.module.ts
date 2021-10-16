@@ -18,6 +18,7 @@ import { User } from './entities/User';
 import { Router } from '@angular/router';
 import { UserService } from './services/user-services/user-service.service';
 import { SharedModule } from './shared/shared.module';
+import { AdvSearchComponent } from './adv-search/adv-search.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { SharedModule } from './shared/shared.module';
     RentNavComponent,
     RentFooterComponent,
     SignupComponent,
-    LoginComponent
+    LoginComponent,
+    AdvSearchComponent
   ],
   imports: [
     ModalModule.forRoot(),
