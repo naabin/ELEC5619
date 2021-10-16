@@ -11,13 +11,14 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-@Service
 public interface UserService<T extends User> extends UserDetailsService {
     T createUser(T user, Set<UserRole> userRoles);
     T updateUser(T user, Set<UserRole> userRoles);
-    Optional<T> findUserById(String id);
+    Optional<T> findUserById(Long id);
     Optional<T> findUserByEmail(String email);
+    Optional<T> findUserByUsername(String username);
     List<T> getAllUsers();
+    void deleteUserById(String id);
     @Override
     UserDetails loadUserByUsername(String s) throws UsernameNotFoundException;
 }

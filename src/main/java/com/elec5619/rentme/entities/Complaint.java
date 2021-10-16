@@ -8,7 +8,7 @@ public class Complaint {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String id;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "item_id")
@@ -27,11 +27,11 @@ public class Complaint {
     @Column
     private String complaint;
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String complaintId) {
+    public void setId(Long complaintId) {
         this.id = complaintId;
     }
 

@@ -5,15 +5,9 @@
 <div class="modal-content">
     <div class="modal-body">
         <form [formGroup]="loginForm" class="ui form">
-            <div class="field">
-                <label>Email or Username</label>
-                <input type="text" name="name" placeholder="Name">
-            </div>
-            <div class="field">
-                <label>Password</label>
-                <input type="password" name="email" placeholder="Password">
-            </div>
-            <button class="ui center aligned button" (click)="bsModalRef.hide()" type="submit">Login</button>
+            <app-input placeholder="Full name" label="Email or Username" inputType="email" [control]="$any(loginForm).controls['username']"></app-input>
+            <app-input placeholder="Password" label="Password" inputType="password" [control]="$any(loginForm).controls['password']"></app-input>
+            <button class="ui center aligned button" (click)="onSubmit()" type="submit">Login</button>
         </form>
     </div>
 </div>

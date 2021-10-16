@@ -1,33 +1,20 @@
 <div class="modal-header">
     <h2 class="ui center aligned icon header">Registration</h2>
-    <button class="btn-close close pull-right" (click)="bsModalRef.hide()">&times;</button>
+    <button class="btn-close close pull-right" (click)="bsModalRef.hide()"></button>
 </div>
 <div class="modal-content">
     <div class="modal-body">
         <form [formGroup]="signUpForm" class="ui form">
-            <div class="field">
-                <label>Name</label>
-                <input type="text" name="name" placeholder="Name">
+            <app-input label="Name" placeholder="Full name..." inputType="text" [control]="$any(signUpForm).controls['name']"></app-input>
+            <app-input label="Email" placeholder="Email..." inputType="email" [control]="$any(signUpForm).controls['email']"></app-input>
+            <app-input label="Username" placeholder="Unique username..." inputType="email" [control]="$any(signUpForm).controls['username']"></app-input>
+            <app-input label="Password" placeholder="Password..." inputType="password" [control]="$any(signUpForm).controls['password']"></app-input>
+            <app-input label="Confirm Password" placeholder="Re-enter Password..." inputType="password" [control]="$any(signUpForm).controls['confirmPassword']"></app-input>
+            <div class="ui red label" *ngIf="$any(signUpForm).controls['password'].touched && $any(signUpForm).controls['confirmPassword'].touched && signUpForm.errors">
+              <p *ngIf="signUpForm.errors.noMatch">Password did not match</p>
             </div>
-            <div class="field">
-                <label>Email</label>
-                <input type="email" name="email" placeholder="Email...">
-            </div>
-            <div class="field">
-                <label>Password</label>
-                <input type="password" name="email" placeholder="Password">
-            </div>
-            <div class="field">
-                <label>Confirm Password</label>
-                <input type="password" name="email" placeholder="Password">
-            </div>
-            <div class="field">
-                <div class="ui checkbox">
-                    <input type="checkbox" tabindex="0" class="hidden">
-                    <label>I agree to the Terms and Conditions</label>
-                </div>
-            </div>
-            <button class="ui center aligned button" (click)="bsModalRef.hide()" type="submit">Sign Up</button>
+            <button [disabled]="signUpForm.invalid" [ngClass]="loading ? 'ui primary loading button': 'ui blue basic aligned button'" (click)="onSubmit()" type="submit">Sign Up</button>
         </form>
     </div>
+    {{this.signUpForm.value | json}}
 </div>
