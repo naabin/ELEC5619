@@ -23,6 +23,12 @@ public class Item {
     private String itemName;
 
     @Column
+    private String category;
+
+    @OneToOne
+    private ItemInformation itemInformation;
+
+    @Column
     private String itemDescription;
 
     @Column
@@ -103,5 +109,21 @@ public class Item {
 
     public List<RentedItem> getRentedItems() {
         return rentedItems;
+    }
+
+    public ItemInformation getItemInformation() {
+        return itemInformation;
+    }
+
+    public void setItemInformation(ItemInformation itemInformation) {
+        this.itemInformation = itemInformation;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 }

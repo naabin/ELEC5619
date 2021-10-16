@@ -15,6 +15,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -93,11 +94,12 @@ public class MyUserDetailsService implements UserService<User> {
     }
 
     @Override
-    public void deleteUserById(String id) {
+    public void deleteUserById(Long id) {
         this.userRepository.deleteById(id);
     }
 
     @Override
+    @Transactional
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         User user = this.userRepository.findUserByEmail(s).orElseThrow(() -> new UsernameNotFoundException("User" +
                 "with " + s + " not found."));

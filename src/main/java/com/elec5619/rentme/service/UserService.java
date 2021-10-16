@@ -18,7 +18,7 @@ public interface UserService<T extends User> extends UserDetailsService {
     Optional<T> findUserByEmail(String email);
     Optional<T> findUserByUsername(String username);
     List<T> getAllUsers();
-    void deleteUserById(String id);
+    void deleteUserById(Long id);
     @Override
     UserDetails loadUserByUsername(String s) throws UsernameNotFoundException;
 }

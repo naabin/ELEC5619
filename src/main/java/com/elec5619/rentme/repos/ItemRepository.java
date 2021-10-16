@@ -4,7 +4,9 @@ import com.elec5619.rentme.entities.Item;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository
-public interface ItemRepository  extends JpaRepository<Item, String> {
+import java.util.List;
 
+@Repository
+public interface ItemRepository  extends JpaRepository<Item, Long> {
+    List<Item> findAllByLender(Long lenderId);
 }

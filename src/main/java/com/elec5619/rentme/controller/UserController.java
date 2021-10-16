@@ -60,7 +60,7 @@ public class UserController {
         return ResponseEntity.ok().body(user);
     }
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteUserById(@PathVariable("id") String id) {
+    public ResponseEntity<?> deleteUserById(@PathVariable("id") Long id) {
         this.userService.deleteUserById(id);
         return ResponseEntity.ok().body("Resource deleted successfully.");
     }

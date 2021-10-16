@@ -41,7 +41,6 @@ export class SignupComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('signup is pressed');
     if (this.signUpForm.invalid) {
       return;
     }
