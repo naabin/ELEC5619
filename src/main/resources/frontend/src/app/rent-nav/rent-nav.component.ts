@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { LoginComponent } from '../login/login.component';
 import { SignupComponent } from '../signup/signup.component';
@@ -10,7 +11,7 @@ import { SignupComponent } from '../signup/signup.component';
 })
 export class RentNavComponent implements OnInit {
   bsModalRef: BsModalRef;
-  constructor(private modalService: BsModalService) { }
+  constructor(private modalService: BsModalService, private router: Router) { }
 
   openSignupModal() {
     this.bsModalRef = this.modalService.show(SignupComponent, {});
@@ -22,5 +23,5 @@ export class RentNavComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  
+
 }

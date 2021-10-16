@@ -8,17 +8,17 @@ public class UserRole {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String id;
+    private Long id;
 
     @Column
     private String role;
 
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String roleId) {
+    public void setId(Long roleId) {
         this.id = roleId;
     }
 

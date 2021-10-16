@@ -10,7 +10,7 @@ public class Payment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String id;
+    private Long id;
 
     @Column
     @NotNull
@@ -21,14 +21,13 @@ public class Payment {
     private String cardNumber;
 
     @Column
-    @NotNull
     private LocalDate expiryDate;
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String paymentId) {
+    public void setId(Long paymentId) {
         this.id = paymentId;
     }
 
@@ -48,11 +47,11 @@ public class Payment {
         this.cardNumber = cardNumber;
     }
 
-    public LocalDate getExpiryDate() {
-        return expiryDate;
+    public String getExpiryDate() {
+        return expiryDate.toString();
     }
 
-    public void setExpiryDate(LocalDate expiryDate) {
-        this.expiryDate = expiryDate;
+    public void setExpiryDate(String date) {
+        this.expiryDate = LocalDate.parse(date);
     }
 }

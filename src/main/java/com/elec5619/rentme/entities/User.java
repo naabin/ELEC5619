@@ -13,6 +13,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -22,7 +23,7 @@ import java.util.Set;
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String id;
+    private Long id;
 
     @Column
     @Length(min = 3)
@@ -46,13 +47,12 @@ public class User implements UserDetails {
     private String username;
 
     @Column
-    @NotNull
     @CreationTimestamp
-    private LocalDate createdDate;
+    private LocalDateTime createdDate;
 
     @Column
     @UpdateTimestamp
-    private LocalDate updatedDate;
+    private LocalDateTime updatedDate;
 
     @Column
     private Integer ratings;
@@ -62,6 +62,9 @@ public class User implements UserDetails {
 
     @OneToMany(cascade = CascadeType.ALL)
     private Set<UserRole> userRoles;
+
+    @Column
+    private String token;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -104,11 +107,11 @@ public class User implements UserDetails {
         this.password = password;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -140,20 +143,22 @@ public class User implements UserDetails {
         this.username = username;
     }
 
-    public LocalDate getCreatedDate() {
+    public LocalDateTime getCreatedDate() {
         return createdDate;
     }
 
-    public void setCreatedDate(LocalDate createdDate) {
-        this.createdDate = createdDate;
+    @PrePersist
+    public void setCreatedDate() {
+        this.createdDate = LocalDateTime.now();
     }
 
-    public LocalDate getUpdatedDate() {
+    public LocalDateTime getUpdatedDate() {
         return updatedDate;
     }
 
-    public void setUpdatedDate(LocalDate updatedDate) {
-        this.updatedDate = updatedDate;
+    @PreUpdate
+    public void setUpdatedDate() {
+        this.updatedDate = LocalDateTime.now();
     }
 
     public Integer getRatings() {
@@ -178,5 +183,13 @@ public class User implements UserDetails {
 
     public void setUserRoles(Set<UserRole> userRoles) {
         this.userRoles = userRoles;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }

@@ -12,7 +12,7 @@ public class Item {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String id;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "lender_id")
@@ -41,11 +41,11 @@ public class Item {
     @OneToMany(mappedBy = "rentedItem", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private final List<RentedItem> rentedItems = new ArrayList<>();
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String itemId) {
+    public void setId(Long itemId) {
         this.id = itemId;
     }
 

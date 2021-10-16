@@ -9,7 +9,7 @@ public class RentedItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String id;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "lender_id", referencedColumnName = "id")
@@ -38,11 +38,11 @@ public class RentedItem {
     @Column
     private Double agreedPrice;
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String rentedItemId) {
+    public void setId(Long rentedItemId) {
         this.id = rentedItemId;
     }
 

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -12,7 +13,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {ModalModule} from 'ngx-bootstrap/modal';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
-import { AdvSearchComponent } from './adv-search/adv-search.component';
+import { JwtInterceptor } from './helpers/JwtInterceptor';
+import { User } from './entities/User';
+import { Router } from '@angular/router';
+import { UserService } from './services/user-services/user-service.service';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -21,18 +26,27 @@ import { AdvSearchComponent } from './adv-search/adv-search.component';
     RentNavComponent,
     RentFooterComponent,
     SignupComponent,
-    LoginComponent,
-    AdvSearchComponent
+    LoginComponent
   ],
   imports: [
     ModalModule.forRoot(),
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true
+  }],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+  currentUser: User;
+  constructor(private router: Router, private userService: UserService) {
+    this.userService.currentUser.subscribe(user => this.currentUser = user);
+  }
+}
