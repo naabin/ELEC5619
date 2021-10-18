@@ -3,6 +3,7 @@ package com.elec5619.rentme.controller;
 import com.elec5619.rentme.config.PasswordEncrypt;
 import com.elec5619.rentme.entities.User;
 import com.elec5619.rentme.entities.UserRole;
+import com.elec5619.rentme.service.EmailService;
 import com.elec5619.rentme.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,13 +23,13 @@ import java.util.Optional;
 public class UserController {
 
     private final UserService<User> userService;
-    private final PasswordEncrypt passwordEncrypt;
+    private final EmailService emailService;
 
 
     @Autowired
-    public UserController(UserService<User> userService, PasswordEncrypt passwordEncrypt) {
+    public UserController(UserService<User> userService, EmailService emailService) {
         this.userService = userService;
-        this.passwordEncrypt = passwordEncrypt;
+        this.emailService = emailService;
     }
 
     @PostMapping("/lender")
@@ -50,6 +51,9 @@ public class UserController {
         roles.add(role);
         user.setUserRoles(roles);
         User newUser = this.userService.createUser(user, roles);
+        this.emailService.sendHtml("nkar7555@uni.sydney.edu.au", user.getEmail(),
+                "Registration",
+                "Welcom to Easy Share. Start sharing your things today", "http://localhost:4200");
         return newUser;
     }
 
