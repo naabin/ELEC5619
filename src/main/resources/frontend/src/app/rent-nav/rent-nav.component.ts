@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { LoginComponent } from '../login/login.component';
+import { UserService } from '../services/user-services/user-service.service';
 import { SignupComponent } from '../signup/signup.component';
 
 @Component({
@@ -11,7 +12,8 @@ import { SignupComponent } from '../signup/signup.component';
 })
 export class RentNavComponent implements OnInit {
   bsModalRef: BsModalRef;
-  constructor(private modalService: BsModalService, private router: Router) { }
+  isActive$ = this.userService.currentUserValue;
+  constructor(private modalService: BsModalService, private router: Router, private userService: UserService) { }
 
   openSignupModal() {
     this.bsModalRef = this.modalService.show(SignupComponent, {});
@@ -22,6 +24,6 @@ export class RentNavComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(this.isActive$.value);
   }
-
 }

@@ -54,4 +54,8 @@ public class ItemService  implements GeneralService<Item> {
     public List<Item> getAllUserItems(Long lenderId) {
         return this.itemRepository.findAllByLender(lenderId);
     }
+
+    public List<Item> getAllItemByName(String query) {
+        return this.itemRepository.findItemsByItemNameLike(query);
+    }
 }
