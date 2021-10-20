@@ -7,7 +7,7 @@ import { LoginComponent } from '../login/login.component';
 import { NotificationService } from '../services/notification-service/notification.service';
 import { UserService } from '../services/user-services/user-service.service';
 import { PasswordMatchValidator } from './passwordmatch';
-import { UniqEmailValidator } from './uniqueEmailValidator';
+import { UniqEmailValidator } from './UniqueEmailValidator';
 import { UniqueUsernameValidator } from './uniqueUserValidator';
 
 @Component({
