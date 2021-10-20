@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { BehaviorSubject } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
-import { Item } from '../entities/Item';
-import { ItemService } from '../services/item-service/item.service';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -12,27 +8,12 @@ import { ItemService } from '../services/item-service/item.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private itemService: ItemService) { }
+  constructor(private readonly _router: Router) { }
 
   ngOnInit(): void {
   }
 
-  searchForm = new FormGroup({
-    search: new FormControl('')
-  });
-  searchedItems: Item[];
-  searching = false;
-
-  searchItems(searchQuery: string) {
-    const subject = new BehaviorSubject<string>(searchQuery);
-    subject.pipe(
-      switchMap((searchValue) => {
-        this.searching = true;
-        return this.itemService.getAllBySearchQuery(searchValue);
-      })
-    ).subscribe((data) => {
-      console.log(data);
-      this.searchedItems = data;
-    })
+  navigateToDetail(productNum: number) {
+    this._router.navigate(["/product-detail", productNum])
   }
 }

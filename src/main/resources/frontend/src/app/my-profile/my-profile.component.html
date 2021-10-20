@@ -1,0 +1,153 @@
+<header class="text-center text-white masthead"
+  style="background: url(&quot;assets/img/242149103_186406770291790_4922807175883442012_n.png&quot;);background-size: cover;height: 400px;">
+  <div class="d-lg-flex align-items-lg-start overlay" style="opacity: 0.60;height: 400px;"></div>
+  <div class="container" style="margin-top: -200px;">
+    <div class="row">
+      <div class="col-xl-9 mx-auto position-relative">
+        <h1 class="mb-5">Hello, {{currentUser?.username}}</h1>
+      </div>
+    </div>
+  </div>
+</header>
+<section class="text-center bg-light border rounded-pill testimonials"
+  style="background: var(--bs-cyan);padding: 150px;">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-xl-6" [formGroup]="userFg"
+        style="border-color: var(--bs-cyan);border-right-width: 1px;border-right-style: dashed;">
+        <div style="text-align: center;">
+          <h3 class="text-start" style="padding: 30px;text-align: center;">My Profile</h3>
+        </div>
+        <div style="padding: 20px;"><img class="img-thumbnail" style="width: 220px;height: 200px;padding: 10px;"
+            src="assets/img/profile/profile-img.png"></div>
+        <div>
+          <h5 style="text-align: left;padding: 10px;">Contact Details</h5>
+          <div class="row">
+            <div class="col-xl-5">
+              <div class="row" style="margin: 0px - 12px;">
+                <div class="col" style="text-align: right;height: 35px;padding: 8px;">
+                  <i class="far fa-user"
+                    style="text-align: right;font-size: 20px;height: 35px;border-color: rgb(33, 37, 41);border-top-color: rgb(33,;border-right-color: 37,;border-bottom-color: 41);border-left-color: 37,;color: var(--bs-cyan);"></i>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="row">
+                <div class="col">
+                  <input class="form-control-plaintext" type="text" formControlName="name"></div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xl-5">
+              <div class="row">
+                <div class="col" style="text-align: right;height: 35px;padding: 8px;"><i class="far fa-envelope"
+                    style="text-align: right;font-size: 20px;height: 35px;color: var(--bs-cyan);"></i></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="row">
+                <div class="col">
+                  <input class="form-control-plaintext" type="text" formControlName="email"></div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xl-5">
+              <div class="row">
+                <div class="col" style="text-align: right;height: 35px;padding: 8px;"><i class="fas fa-phone"
+                    style="text-align: right;font-size: 20px;height: 35px;color: var(--bs-cyan);"></i></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="row">
+                <div class="col"><input class="form-control-plaintext" type="text" formControlName="phone"></div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xl-5">
+              <div class="row">
+                <div class="col" style="text-align: right;height: 35px;padding: 8px;"><i class="fa fa-home"
+                    style="text-align: right;font-size: 20px;height: 35px;color: var(--bs-cyan);"></i></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="row">
+                <div class="col"><input class="form-control-plaintext" type="text" formControlName="streetAddress"
+                    style="height: 38px;"></div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xl-5">
+              <div class="row">
+                <div class="col" style="text-align: right;height: 35px;padding: 8px;">
+                  <p></p>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="row">
+                <div class="col"><input class="form-control-plaintext" type="text" formControlName="detailAddress"
+                    style="height: 38px;"></div>
+              </div>
+            </div>
+          </div>
+          <h5 style="text-align: left;padding: 10px;"><br>Payment Details</h5>
+          <div class="row">
+            <div class="col-xl-5">
+              <div class="row" style="margin: 0px - 12px;">
+                <div class="col" style="text-align: right;height: 35px;padding: 8px;"><i class="far fa-credit-card"
+                    style="text-align: right;font-size: 20px;height: 35px;color: var(--bs-cyan);"></i></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="row">
+                <div class="col"><input class="form-control-plaintext" type="text" formControlName="nameOnCard"></div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xl-5">
+              <div class="row" style="margin: 0px - 12px;">
+                <div class="col" style="text-align: right;height: 35px;padding: 8px;"><i class="fa fa-edit"
+                    style="text-align: right;font-size: 20px;height: 35px;color: var(--bs-cyan);"></i></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="row">
+                <div class="col"><input class="form-control-plaintext" type="text" formControlName="cardNumber"></div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xl-5">
+              <div class="row" style="margin: 0px - 12px;">
+                <div class="col" style="text-align: right;height: 35px;padding: 8px;"><i class="far fa-calendar-alt"
+                    style="text-align: right;font-size: 20px;height: 35px;color: var(--bs-cyan);"></i></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="row">
+                <div class="col" style="text-align: left; line-height: 35px;">
+                  {{this.currentUser?.payment?.expiryDate | date}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div></div>
+        <h3 class="text-start" style="padding: 30px;">My Appliances</h3>
+        <div style="padding: 20px;text-align: center;height: 400px;" *ngFor="let appliance of appliances">
+          <h5 class="text-center">{{ appliance.title }}</h5><img class="img-thumbnail"
+            style="width: 200px;height: 200px;padding: 10px;border-style: solid;" [src]="appliance.path">
+          <div style="padding: 10px;"><button class="btn btn-primary" data-bss-hover-animate="tada" type="button"
+              style="text-align: right;background: var(--bs-cyan);border-color: var(--bs-cyan);">View</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

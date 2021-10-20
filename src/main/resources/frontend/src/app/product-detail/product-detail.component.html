@@ -1,0 +1,209 @@
+<div class="container" style="padding: 30px;margin: 0px;background: #00000000;">
+    <header>
+        <div
+            style="padding: 30px;box-shadow: 0px 0px 0px 0px #17a2b8;border-bottom-width: 3px;border-bottom-style: inset;">
+            <h1 style="text-align: center;">{{productDetail.itemName}}</h1>
+            <div class="text-start" style="text-align: center;">
+                <div class="row">
+                    <div class="col text-center">
+                        <ng-container *ngFor="let item of fullStarArr">
+                            <i class="fa fa-star"></i>
+                        </ng-container>
+                        <ng-container *ngIf="halfStar === 1">
+                            <i class="fa fa-star-half"></i>
+                        </ng-container>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col text-center">
+                        <a href="#" style="font-size: 10px;height: 0px;width: 0px;">{{productDetail.reviewNum}}
+                            reviews</a></div>
+                </div>
+                <div class="row" style="text-align: center;">
+                    <div class="col" style="padding: 20px;text-align: left;">
+                        <p style="text-align: center;">{{productDetail.positionName}}
+                            ({{productDetail.positionDistance}} kilometers away)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="text-center"
+         style="padding: 50px;text-align: center;border-radius: 3px;border-bottom-width: 3px;border-bottom-style: inset;">
+        <h3 style="text-align: left;box-shadow: 0px 0px 0px 0px;">
+            <i class="far fa-file-image" style="font-size: 30px;padding: 20px;"></i>Images
+        </h3>
+        <div class="row text-center">
+            <div class="col text-center" style="text-align: center;"><img
+                src="assets/img/detail/{{productDetail.imagePathOne}}" style="text-align: center;padding: 10px;"
+                width="600px" height="500px"></div>
+        </div>
+        <div class="row">
+            <div class="col text-end" style="text-align: center;padding: 10px;"><img
+                src="assets/img/detail/{{productDetail.imagePathOne}}" width="300px" height="250px"
+                style="text-align: center;"></div>
+            <div class="col text-start" style="text-align: center;padding: 10px;"><img
+                src="assets/img/detail/{{productDetail.imagePathThree}}" width="300px" height="250px"></div>
+        </div>
+    </div>
+    <div style="padding: 50px;border-bottom-style: inset;">
+        <h3 style="text-align: left;"><i class="far fa-edit" style="font-size: 30px;padding: 20px;"></i>Description</h3>
+        <p style="padding: 20px;text-align: left;box-shadow: 0px 0px 0px;"
+           [innerHTML]="productDetail.itemDescription"></p>
+    </div>
+    <div style="padding: 50px;border-bottom-style: inset;">
+        <h3 style="padding: 0px 0px 20px;text-align: left;"><i class="fas fa-tools"
+                                                               style="font-size: 30px;padding: 20px;"></i>Appliance
+            Information&nbsp;</h3>
+        <div class="row" style="text-align: right;width: 600px;">
+            <div class="col-sm-4 col-md-3 col-xxl-3 offset-sm-1 offset-md-1 offset-xxl-1">
+                <p style="text-align: left;">Category:</p>
+            </div>
+            <div class="col-sm-5 col-md-8 col-xl-5 col-xxl-2" style="text-align: left;">
+                <p>{{productDetail.category}}</p>
+            </div>
+        </div>
+        <div class="row" style="text-align: right;width: 600px;">
+            <div class="col-sm-4 col-md-3 col-xxl-3 offset-sm-1 offset-md-1 offset-xxl-1">
+                <p style="text-align: left;">Brand:</p>
+            </div>
+            <div class="col-sm-5 col-md-8 col-xl-5 col-xxl-2" style="text-align: left;">
+                <p>{{productDetail.brand}}</p>
+            </div>
+        </div>
+        <div class="row" style="text-align: right;width: 600px;">
+            <div class="col-sm-4 col-md-3 col-xxl-3 offset-sm-1 offset-md-1 offset-xxl-1">
+                <p style="text-align: left;">Model Number:&nbsp;</p>
+            </div>
+            <div class="col-sm-5">
+                <p style="text-align: left;">{{productDetail.modelNum}}</p>
+            </div>
+        </div>
+        <div class="row" style="text-align: right;width: 600px;">
+            <div class="col-sm-4 col-md-3 col-xxl-3 offset-sm-1 offset-md-1 offset-xxl-1">
+                <p style="text-align: left;">Serial Number</p>
+            </div>
+            <div class="col-sm-5">
+                <p style="text-align: left;">{{productDetail.serialNum}}</p>
+            </div>
+        </div>
+        <div class="row" style="text-align: right;width: 600px;">
+            <div class="col-sm-4 col-md-3 col-xxl-3 offset-sm-1 offset-md-1 offset-xxl-1">
+                <p style="text-align: left;">Year Purchased</p>
+            </div>
+            <div class="col-sm-5">
+                <p style="text-align: left;">{{productDetail.yearPurchased}}</p>
+            </div>
+        </div>
+        <div class="row" style="text-align: center;width: 600px;">
+            <div class="col-sm-4 col-md-3 col-xxl-3 offset-sm-1 offset-md-1 offset-xxl-1">
+                <p style="text-align: left;">Condition</p>
+            </div>
+            <div class="col-sm-5">
+                <p style="text-align: left;">{{productDetail.condition}}</p>
+            </div>
+        </div>
+    </div>
+    <div style="padding: 50px;border-bottom-style: inset;">
+        <h3 style="padding: 0px 0px 20px;"><i class="far fa-user-circle" style="font-size: 30px;padding: 20px;"></i>Lender
+            Information&nbsp;</h3>
+        <div class="row" style="text-align: right;width: 600px;">
+            <div class="col text-center" style="padding: 0px 0px 30px ;">
+                <img class="rounded-circle"
+                     src="assets/img/detail/{{productDetail.lender.avatar}}"
+                     width="250px" height="250px"
+                     style="padding: 20px;">
+            </div>
+        </div>
+        <div class="row" style="text-align: right;width: 600px;">
+            <div class="col-sm-3 col-md-3 col-xxl-3 offset-sm-2 offset-md-1 offset-xxl-1 text-center">
+                <p style="text-align: left;">First Name:</p>
+            </div>
+            <div class="col-sm-5 col-md-8 col-xl-5 col-xxl-2" style="text-align: left;">
+                <p>{{productDetail.lender.name}}</p>
+            </div>
+        </div>
+        <div class="row" style="text-align: right;width: 600px;">
+            <div class="col-sm-3 col-md-3 col-xxl-3 offset-sm-2 offset-md-1 offset-xxl-1">
+                <p style="text-align: left;">Location</p>
+            </div>
+            <div class="col-sm-5 col-md-8 col-xl-5 col-xxl-2" style="text-align: left;">
+                <p>{{productDetail.lender.address?.country}}</p>
+            </div>
+        </div>
+    </div>
+    <div style="padding: 50px;text-align: right;border-bottom-width: 3px;">
+        <h3 style="padding: 0px 0px 20px;text-align: left;"><i class="far fa-money-bill-alt"
+                                                               style="font-size: 30px;padding: 20px;"></i>Initiate a
+            Transaction</h3>
+        <div class="row" style="text-align: right;width: 600px;">
+            <div class="col-sm-3 col-md-3 col-xxl-3 offset-sm-2 offset-md-1 offset-xxl-1 text-center">
+                <p style="text-align: left;">Rate per day:</p>
+            </div>
+            <div class="col-sm-5 col-md-8 col-xl-5 col-xxl-2" style="text-align: left;">
+                <p>${{productDetail.ratePerDay}}</p>
+            </div>
+        </div>
+        <div class="row" style="text-align: right;width: 600px;">
+            <div class="col-sm-3 col-md-3 col-xxl-3 offset-sm-2 offset-md-1 offset-xxl-1 text-center">
+                <p style="text-align: left;">Rate per week:</p>
+            </div>
+            <div class="col-sm-5 col-md-8 col-xl-5 col-xxl-2" style="text-align: left;">
+                <p>${{productDetail.ratePerWeek}}</p>
+            </div>
+        </div>
+        <div class="row" style="text-align: right;width: 600px;">
+            <div class="col-sm-3 col-md-3 col-xxl-3 offset-sm-2 offset-md-1 offset-xxl-1 text-center">
+                <p style="text-align: left;">Rate per month:</p>
+            </div>
+            <div class="col-sm-5 col-md-8 col-xl-5 col-xxl-2" style="text-align: left;">
+                <p>${{productDetail.ratePerMonth}}</p>
+            </div>
+        </div>
+        <div class="row" style="text-align: right;width: 600px;">
+            <div class="col">
+                <p class="text-start" style="padding: 20px;"><strong>I would like to rent for (select
+                    one):&nbsp;</strong></p>
+            </div>
+        </div>
+        <div class="row" style="text-align: right;width: 600px;">
+            <div class="col-sm-2 col-md-2 col-xl-2 col-xxl-3 offset-sm-2 offset-md-1 offset-xxl-1 text-center"
+                 style="text-align: center;">
+                <input type="checkbox" [(ngModel)]="selectedRateDay"></div>
+            <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3 col-xxl-3" style="text-align: left;">
+                <input type="number" style="width: 100px;" [(ngModel)]="targetDay">
+            </div>
+            <div class="col-sm-2 col-xl-2">
+                <p style="text-align: left;">day(s)</p>
+            </div>
+        </div>
+        <div class="row" style="text-align: right;width: 600px;">
+            <div class="col-sm-2 col-md-2 col-xl-2 col-xxl-3 offset-sm-2 offset-md-1 offset-xxl-1 text-center"
+                 style="text-align: center;">
+                <input type="checkbox" [(ngModel)]="selectedRateWeek"/></div>
+            <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3 col-xxl-3" style="text-align: left;">
+                <input type="number" style="width: 100px;" [(ngModel)]="targetWeek"/>
+            </div>
+            <div class="col-sm-2 col-md-2 col-xl-2">
+                <p style="text-align: left;">week(s)</p>
+            </div>
+        </div>
+        <div class="row" style="text-align: right;width: 600px;">
+            <div class="col-sm-2 col-md-2 col-xl-2 col-xxl-3 offset-sm-2 offset-md-1 offset-xxl-1 text-center"
+                 style="text-align: center;">
+                <input type="checkbox" [(ngModel)]="selectedRateMonth"></div>
+            <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3 col-xxl-3" style="text-align: left;">
+                <input type="number" style="width: 100px;" [(ngModel)]="targetMonth">
+            </div>
+            <div class="col-sm-2 col-xl-2">
+                <p style="text-align: left;">month(s)</p>
+            </div>
+        </div>
+        <h5 style="text-align: right;padding: 10px;">Calculated Total: ${{total}}</h5>
+        <button class="btn btn-primary" data-bss-hover-animate="tada" type="button"
+                style="text-align: right;background: #17a2b8;border-color: #17a2b8;border-right-color: #17a2b8;font-size: 20px;"
+                (click)="payment()">
+            Continue to Payment
+        </button>
+    </div>
+</div>

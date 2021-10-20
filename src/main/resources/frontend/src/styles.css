@@ -1,5 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
-@import "~bootstrap";
 @import 'semantic-ui-css/semantic.css';
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@import "~bootstrap";
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+/* ---------------- Margin -------------------*/
+.esk-mt-1 {
+  margin-top: 1rem;
+}
+
+.esk-ml-1 {
+  margin-left: 1rem;
+}
+
+.esk-ml-2 {
+  margin-left: 2rem;
+}
+
+/* ---------------- Font Size -----------------*/
+.esk-fs-20 {
+  font-size: 20px;
+}
