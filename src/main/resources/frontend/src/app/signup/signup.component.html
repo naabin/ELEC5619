@@ -1,46 +1,20 @@
 <div class="modal-header">
-  <h2 class="ui center aligned icon header">Registration</h2>
-  <button class="btn-close close pull-right" (click)="hideModal()">&times;</button>
+    <h2 class="ui center aligned icon header">Registration</h2>
+    <button class="btn-close close pull-right" (click)="bsModalRef.hide()"></button>
 </div>
 <div class="modal-content">
-  <div class="modal-body">
-    <form [formGroup]="signUpForm" class="ui form">
-      <div class="field">
-        <label>Usernaame</label>
-        <input type="text" formControlName="username" placeholder="Username">
-        <div class="alert alert-danger esk-mt-1" role="alert" *ngIf='signUpForm.controls["username"].invalid'>
-          Please input the Username
-        </div>
-      </div>
-      <div class="field">
-        <label>Password</label>
-        <input type="password" formControlName="password" placeholder="Password">
-        <div class="alert alert-danger esk-mt-1" role="alert" *ngIf='signUpForm.controls["password"].invalid'>
-          Please input the Password
-        </div>
-      </div>
-      <div class="field">
-        <label>Email</label>
-        <input type="email" formControlName="email" placeholder="Email">
-        <div class="alert alert-danger esk-mt-1" role="alert" *ngIf='signUpForm.controls["email"].invalid'>
-          Please input the right Email
-        </div>
-      </div>
-      <div class="field">
-        <label>Address</label>
-        <input type="text" formControlName="address" placeholder="Address">
-        <div class="alert alert-danger esk-mt-1" role="alert" *ngIf='signUpForm.controls["address"].invalid'>
-          Please input the Address
-        </div>
-      </div>
-      <div class="field">
-        <div class="ui checkbox">
-          <input type="checkbox" formControlName='acceptTerms'>
-          <label>I agree to the Terms and Conditions</label>
-        </div>
-      </div>
-      <button class="ui center aligned button" [disabled]="signUpForm.invalid"
-        (click)="register()">Sign Up</button>
-    </form>
-  </div>
+    <div class="modal-body">
+        <form [formGroup]="signUpForm" class="ui form">
+            <app-input label="Name" placeholder="Full name..." inputType="text" [control]="$any(signUpForm).controls['name']"></app-input>
+            <app-input label="Email" placeholder="Email..." inputType="email" [control]="$any(signUpForm).controls['email']"></app-input>
+            <app-input label="Username" placeholder="Unique username..." inputType="email" [control]="$any(signUpForm).controls['username']"></app-input>
+            <app-input label="Password" placeholder="Password..." inputType="password" [control]="$any(signUpForm).controls['password']"></app-input>
+            <app-input label="Confirm Password" placeholder="Re-enter Password..." inputType="password" [control]="$any(signUpForm).controls['confirmPassword']"></app-input>
+            <div class="ui red label" *ngIf="$any(signUpForm).controls['password'].touched && $any(signUpForm).controls['confirmPassword'].touched && signUpForm.errors">
+              <p *ngIf="signUpForm.errors.noMatch">Password did not match</p>
+            </div>
+            <button [disabled]="signUpForm.invalid" [ngClass]="loading ? 'ui primary loading button': 'ui blue basic aligned button'" (click)="onSubmit()" type="submit">Sign Up</button>
+        </form>
+    </div>
+    {{this.signUpForm.value | json}}
 </div>

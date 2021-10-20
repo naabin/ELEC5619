@@ -1,8 +1,8 @@
 export class Address {
-    id?: string;
+    id: string;
     streetAddress: string;
     suburb: string;
     state: string;
     postcode: string;
-    country?: string;
+    country: string;
 }
