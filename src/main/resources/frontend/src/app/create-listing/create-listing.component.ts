@@ -20,7 +20,6 @@ export class CreateListingComponent implements OnInit {
   conditionRequiresMantenance = false;
 
   yearPurchased = '';
-
   rentalPricePerDay: number;
   rentalPricePerWeek: number;
   rentalPricePerMonth: number;

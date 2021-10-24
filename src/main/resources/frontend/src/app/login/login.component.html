@@ -1,13 +1,13 @@
 <div class="modal-header">
-    <h2 class="ui center aligned icon header">Login</h2>
-    <button class="btn-close close pull-right" (click)="bsModalRef.hide()"></button>
+  <h2 class="ui center aligned icon header">Login</h2>
+  <button class="btn-close close pull-right" (click)="bsModalRef.hide()"></button>
 </div>
 <div class="modal-content">
-    <div class="modal-body">
-        <form [formGroup]="loginForm" class="ui form">
-            <app-input placeholder="Full name" label="Email or Username" inputType="email" [control]="$any(loginForm).controls['username']"></app-input>
-            <app-input placeholder="Password" label="Password" inputType="password" [control]="$any(loginForm).controls['password']"></app-input>
-            <button class="ui center aligned button" (click)="onSubmit()" type="submit">Login</button>
-        </form>
-    </div>
+  <div class="modal-body">
+      <form [formGroup]="loginForm" class="ui form">
+          <app-input placeholder="Full name" label="Email or Username" inputType="email" [control]="$any(loginForm).controls['username']"></app-input>
+          <app-input placeholder="Password" label="Password" inputType="password" [control]="$any(loginForm).controls['password']"></app-input>
+          <button class="ui center aligned button" (click)="onSubmit()" type="submit">Login</button>
+      </form>
+  </div>
 </div>

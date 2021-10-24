@@ -7,9 +7,6 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
-import {ToastrService} from 'ngx-toastr';
-import {User} from '../entities/User';
-import {AuthHttpService} from "../http/auth.http.service";
 import { UserService } from '../services/user-services/user-service.service';
 
 @Component({

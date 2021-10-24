@@ -1,4 +1,3 @@
-
 import { Address } from './Address';
 import { Payment } from './Payment';
 import { UserRole } from './UserRole';
