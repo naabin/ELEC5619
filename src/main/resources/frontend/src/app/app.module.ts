@@ -19,6 +19,11 @@ import { Router } from '@angular/router';
 import { UserService } from './services/user-services/user-service.service';
 import { SharedModule } from './shared/shared.module';
 import { AdvSearchComponent } from './adv-search/adv-search.component';
+import { ProfileComponent } from './profile/profile.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { CreateListingComponent } from './create-listing/create-listing.component';
+
+import {MatAutocompleteModule} from '@angular/material/autocomplete'
 
 @NgModule({
   declarations: [
@@ -28,7 +33,10 @@ import { AdvSearchComponent } from './adv-search/adv-search.component';
     RentFooterComponent,
     SignupComponent,
     LoginComponent,
-    AdvSearchComponent
+    AdvSearchComponent,
+    ProfileComponent,
+    ProductDetailComponent,
+    CreateListingComponent
   ],
   imports: [
     ModalModule.forRoot(),
@@ -38,7 +46,8 @@ import { AdvSearchComponent } from './adv-search/adv-search.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    MatAutocompleteModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true

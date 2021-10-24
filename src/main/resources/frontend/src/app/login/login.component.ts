@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit {
        next: () => {
          this.loading = false;
          this.router.navigateByUrl('/profile');
+         this.bsModalRef.hide();
        }
      })
    }

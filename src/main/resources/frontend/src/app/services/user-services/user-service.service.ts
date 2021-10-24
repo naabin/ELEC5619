@@ -55,6 +55,10 @@ export class UserService {
       )
   }
 
+  getUserById(id: number) {
+    return this.http.get<User>(this.remoteUrl + `/api/user/${id}`);
+  }
+
   logout(): void {
     localStorage.removeItem('token');
     localStorage.removeItem('userId');

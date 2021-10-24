@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
@@ -10,7 +10,7 @@ import { ItemService } from '../services/item-service/item.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnChanges {
 
   constructor(private itemService: ItemService) { }
 
@@ -23,6 +23,10 @@ export class HomeComponent implements OnInit {
   searchedItems: Item[];
   searching = false;
 
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes);
+  }
+
   searchItems(searchQuery: string) {
     const subject = new BehaviorSubject<string>(searchQuery);
     subject.pipe(
@@ -31,7 +35,6 @@ export class HomeComponent implements OnInit {
         return this.itemService.getAllBySearchQuery(searchValue);
       })
     ).subscribe((data) => {
-      console.log(data);
       this.searchedItems = data;
     })
   }

@@ -41,11 +41,20 @@ public class Item {
     @NotNull
     private Double itemPrice;
 
-    @OneToMany(mappedBy = "complainedItem", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private final List<Complaint> complaints = new ArrayList<>();
+//    @OneToMany(mappedBy = "complainedItem", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    private final List<Complaint> complaints = new ArrayList<>();
 
-    @OneToMany(mappedBy = "rentedItem", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private final List<RentedItem> rentedItems = new ArrayList<>();
+//    @OneToMany(mappedBy = "rentedItem", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    private final List<RentedItem> rentedItems = new ArrayList<>();
+
+    @OneToMany
+    @JoinColumn
+    private final List<Image> images = new ArrayList<>();
+
+
+    public void addImage(Image image) {
+        this.images.add(image);
+    }
 
     public Long getId() {
         return id;
@@ -103,13 +112,13 @@ public class Item {
         this.itemPrice = itemPrice;
     }
 
-    public List<Complaint> getComplaints() {
-        return complaints;
-    }
+//    public List<Complaint> getComplaints() {
+//        return complaints;
+//    }
 
-    public List<RentedItem> getRentedItems() {
-        return rentedItems;
-    }
+//    public List<RentedItem> getRentedItems() {
+//        return rentedItems;
+//    }
 
     public ItemInformation getItemInformation() {
         return itemInformation;
@@ -125,5 +134,9 @@ public class Item {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public List<Image> getImages() {
+        return images;
     }
 }

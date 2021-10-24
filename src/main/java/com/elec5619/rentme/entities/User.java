@@ -62,6 +62,9 @@ public class User implements UserDetails {
     @OneToMany(cascade = CascadeType.ALL)
     private Set<UserRole> userRoles;
 
+    @OneToOne
+    private Image image;
+
     @Column
     private String token;
 

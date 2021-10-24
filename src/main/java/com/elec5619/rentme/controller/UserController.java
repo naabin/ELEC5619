@@ -1,6 +1,5 @@
 package com.elec5619.rentme.controller;
 
-import com.elec5619.rentme.config.PasswordEncrypt;
 import com.elec5619.rentme.entities.User;
 import com.elec5619.rentme.entities.UserRole;
 import com.elec5619.rentme.service.EmailService;

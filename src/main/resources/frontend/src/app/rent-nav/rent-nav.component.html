@@ -4,7 +4,7 @@
         <div class="collapse navbar-collapse" id="navcol-1">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item"><a class="nav-link active" href="/">Main Feed</a></li>
-                <li *ngIf="isActive$ | async" class="nav-item"><a class="nav-link" href="#">My Profile</a></li>
+                <li *ngIf="isActive$ | async" class="nav-item"><a class="nav-link" [routerLink]="'profile'">My Profile</a></li>
                 <li *ngIf="isActive$ | async" class="nav-item"><a class="nav-link" href="#">Messages</a></li>
             </ul>
             <ul class="navbar-nav">
