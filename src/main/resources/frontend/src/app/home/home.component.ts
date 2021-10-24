@@ -1,5 +1,6 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { Item } from '../entities/Item';
@@ -12,7 +13,7 @@ import { ItemService } from '../services/item-service/item.service';
 })
 export class HomeComponent implements OnInit, OnChanges {
 
-  constructor(private itemService: ItemService) { }
+  constructor(private readonly _router: Router, private itemService: ItemService) { }
 
   ngOnInit(): void {
   }

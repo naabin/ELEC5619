@@ -1,5 +1,5 @@
 export class Payment {
-    id: string;
+    id?: string;
     nameOnCard: string;
     cardNumber: string;
     expiryDate: Date;
