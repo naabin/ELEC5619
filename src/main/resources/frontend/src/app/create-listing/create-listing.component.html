@@ -1,0 +1,150 @@
+<section id="contact" style="background: #8ab9ba;">
+  <div class="container">
+    <h2 class="text-uppercase text-center text-secondary mb-0" style="font-family: lato;font-size: 36px;">Create a
+      listing</h2>
+    <hr class="star-dark mb-5">
+    <div class="row">
+      <div class="col-lg-8 mx-auto" style="padding: 50px;">
+        <div id="contactForm" name="sentMessage" novalidate="novalidate">
+          <div class="control-group">
+            <div class="mb-0 form-floating controls pb-2"><input class="form-control" type="text" id="name-5"
+                required="" placeholder="Name" style="background: #dce7e8;font-size: 16px;"
+                [(ngModel)]="titleOfAdvertisement"><label class="form-label" style="font-size: 18px;">Title of
+                Advertisement</label><small class="form-text text-danger help-block"></small></div>
+          </div>
+          <div class="control-group">
+            <div class="mb-0 form-floating controls pb-2"><input class="form-control" type="text" id="name-1"
+                required="" placeholder="Name" style="background: #dce7e8;font-size: 16px;"
+                [(ngModel)]="category"><label class="form-label" style="font-size: 18px;">Category (e.g. Kettle,
+                BBQ)</label><small class="form-text text-danger help-block"></small></div>
+          </div>
+          <div class="border rounded-0 control-group" style="padding: 0px 0px 12px 0px;">
+            <div class="border rounded-0 mb-0 form-floating controls pb-2"
+              style="height: 180px;background: #dce7e8;padding: 0px;margin: 0px;border-radius: 30px;border-width: 3px;">
+              <p style="font-size: 18px;color: #868e96;background: #dce7e8;padding: 3px 12px;">Upload Images</p><input
+                class="form-control" type="file"
+                style="font-size: 13px;padding: 10px 20px 10px;height: 40px;border-style: none;background: #dce7e8;"><input
+                class="form-control" type="file"
+                style="font-size: 13px;padding: 10px 20px 10px;height: 40px;border-style: none;background: #dce7e8;"><input
+                class="form-control" type="file"
+                style="font-size: 13px;padding: 10px 20px 10px;height: 40px;border-style: none;background: #dce7e8;">
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="mb-0 form-floating controls pb-2"><input class="form-control" type="text" id="name-2"
+                required="" placeholder="Name" style="background: #dce7e8;font-size: 16px;" [(ngModel)]="brand"><label
+                class="form-label" style="font-size: 18px;">Brand</label><small
+                class="form-text text-danger help-block"></small></div>
+          </div>
+          <div class="control-group">
+            <div class="mb-0 form-floating controls pb-2"><input class="form-control" type="text" id="name-3"
+                required="" placeholder="Name" style="background: #dce7e8;font-size: 16px;"
+                [(ngModel)]="modelNumber"><label class="form-label" style="font-size: 18px;">Model Number</label><small
+                class="form-text text-danger help-block"></small>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="mb-0 form-floating controls pb-2"><input class="form-control" type="text" id="name-4"
+                required="" placeholder="Name" style="background: #dce7e8;font-size: 16px;"
+                [(ngModel)]="serialNumber"><label class="form-label" style="font-size: 18px;">Serial
+                Number</label><small class="form-text text-danger help-block"></small>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="mb-0 form-floating controls pb-2">
+              <div id="contactForm-1" name="sentMessage" novalidate="novalidate">
+                <div class="border rounded-0 control-group" style="padding: 10px;background: #dce7e8;">
+                  <div class="mb-0 form-floating controls pb-2" style="background: #dce7e8;padding: 0px;">
+                    <p style="font-size: 18px;color: #868e96;margin: 0px 10px 10px 03px;">Condition</p>
+                    <div class="row" style="margin: 10px 30px;">
+                      <div class="col">
+                        <div class="form-check" style="font-size: 10px;"><input class="form-check-input" type="checkbox"
+                            id="formCheck-1" [(ngModel)]="conditionExcellent"><label class="form-check-label"
+                            for="formCheck-1" style="color: #868e96;">Excellent</label></div>
+                        <div class="form-check" style="font-size: 10px;"><input class="form-check-input" type="checkbox"
+                            id="formCheck-3" [(ngModel)]="conditionGood"><label class="form-check-label"
+                            for="formCheck-1" style="color: #868e96;">Good</label></div>
+                        <div class="form-check" style="font-size: 10px;"><input class="form-check-input" type="checkbox"
+                            id="formCheck-4" [(ngModel)]="conditionBelowAverage"><label class="form-check-label"
+                            for="formCheck-1" style="color: #868e96;">Below Average</label></div>
+                        <div class="form-check" style="font-size: 10px;"><input class="form-check-input" type="checkbox"
+                            id="formCheck-2"><label class="form-check-label" for="formCheck-1" style="color: #868e96;"
+                            [(ngModel)]="conditionRequiresMantenance">Requires Maintenance</label></div>
+                      </div>
+                    </div><small class="form-text text-danger help-block"></small><small
+                      class="form-text text-danger help-block"></small>
+                  </div>
+                </div>
+                <div class="control-group"></div>
+                <div id="success-1"></div>
+                <div style="text-align: right;"></div>
+              </div>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="text-start mb-0 form-floating controls pb-2">
+              <input class="form-control" type="tel" id="phone-3" required="" placeholder="Phone Number"
+                style="background: #dce7e8;font-size: 16px;" [(ngModel)]="yearPurchased"><label class="form-label"
+                style="font-size: 18px;text-align: center;padding: 20px;">
+                Year Purchased&nbsp;</label>
+              <div style="background: #dce7e8; padding: 10px 20px;">
+                <div class="btn-group" dropdown>
+                  <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+                    style="background: #0d6a78;border-color: #0d6a78;font-size: 12px;"
+                    aria-controls="dropdown-basic">Year<span class="caret"></span>
+                  </button>
+                  <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu"
+                    aria-labelledby="button-basic">
+                    <li role="menuitem"><a class="dropdown-item">First Item</a></li>
+                    <li role="menuitem"><a class="dropdown-item">Second Item</a></li>
+                    <li role="menuitem"><a class="dropdown-item">Third Item</a></li>
+                  </ul>
+                </div>
+              </div>
+              <small class="form-text text-danger help-block"></small>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="mb-0 form-floating controls pb-2">
+              <div id="contactForm-2" name="sentMessage" novalidate="novalidate">
+                <div class="border rounded-0 control-group" style="padding: 10px;background: #dce7e8;">
+                  <div class="mb-0 form-floating controls pb-2" style="background: #dce7e8;padding: 0px;">
+                    <p style="font-size: 18px;color: #868e96;margin: 0px 10px 10px 03px;">Price</p>
+                    <div class="row" style="margin: 10px 30px;">
+                      <div class="col-lg-6" style="padding: 20px;text-align: right;height: 130px;">
+                        <p style="font-size: 14px;height: 18px;color: #868e96;">Rental price per day ($)</p>
+                        <p style="font-size: 14px;color: #868e96;">Rental price per week ($)</p>
+                        <p style="font-size: 14px;color: #868e96;">Rental price per month ($)</p>
+                      </div>
+                      <div class="col" style="text-align: left;height: 130px;"><input class="form-control" type="number"
+                          style="height: 30px;margin: 10px;font-size: 16px;" [(ngModel)]="rentalPricePerDay"><input
+                          class="form-control" type="number" style="height: 30px;margin: 10px;font-size: 16px;"
+                          [(ngModel)]="rentalPricePerWeek"><input class="form-control" type="number"
+                          style="height: 30px;margin: 10px;font-size: 16px;" [(ngModel)]="rentalPricePerMonth"></div>
+                      <div class="col-lg-3" style="height: 130px;"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="control-group"></div>
+                <div id="success-2"></div>
+                <div style="text-align: right;"></div>
+              </div>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="mb-5 form-floating controls pb-2"><textarea class="form-control" id="message" required=""
+                placeholder="Message" style="height: 180px;background: #dce7e8;font-size: 16px;"
+                [(ngModel)]="description"></textarea><label class="form-label"
+                style="font-size: 18px;">Description</label><small class="form-text text-danger help-block"></small>
+            </div>
+          </div>
+          <div id="success"></div>
+          <div style="text-align: right;"><button class="btn btn-primary btn-xl" data-bss-hover-animate="tada"
+              id="sendMessageButton" type="submit" (click)="submitChanges()"
+              style="text-align: right;background: #0d6a78;border-color: #0d6a78;font-size: 16px;padding: 10px;">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
