@@ -1,0 +1,10 @@
+.af-wapper {
+    background: url(../../assets/img/advance-filters/af-bg.jpeg), #ffffff;
+    background-size: cover, auto;
+    filter: saturate(108%);
+}
+
+.testimonials {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+}

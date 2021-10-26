@@ -1,0 +1,208 @@
+<div class="af-wapper">
+    <section class="text-center bg-light bg-gradient testimonials" title="Distance"
+             style="background: url(../../assets/img/advance-filters/af-bg.jpeg), rgb(47,125,159);border-top-color: rgb(33,;border-right-color: rgb(79,41,41);border-bottom-color: 41);border-left-color: 37,;opacity: 0.77;background-size: contain, auto;">
+        <div class="container" style="box-shadow: 0px 0px;opacity: 1;">
+            <h1 class="mb-5">Advanced Filters&nbsp;</h1>
+            <div class="col-md-10 col-lg-8 col-xl-7 mx-auto position-relative">
+                <div style="padding: 30px ;">
+                    <input class="form-control" type="text"
+                           placeholder="Type appliance category (e.g. kettle)"
+                           style="background: rgb(255, 255, 255);" [(ngModel)]="applianceCategory">
+                </div>
+            </div>
+            <div class="col-md-10 col-lg-8 col-xl-7 mx-auto position-relative">
+                <div style="padding: 30px;height: 190px;">
+                    <h5><label for="rent-time">How long would you like to rent?</label></h5>
+                    <div class="row" style="margin: 0px - 5 px;">
+                        <div class="col-xl-4 offset-xl-2 text-end align-self-center" style="text-align: left;">
+                            <input
+                                id="rent-time"
+                                class="form-control d-xl-flex justify-content-xl-center align-items-xl-center"
+                                type="number"
+                                style="text-align: center;" min="1" max="100" placeholder="Insert number"
+                                [(ngModel)]="rentTime"></div>
+                        <div class="col-xl-3 offset-xl-1">
+                            <div class="form-check text-center">
+                                <input class="form-check-input" type="checkbox" id="formCheck-1"
+                                       [(ngModel)]="rentDaySelected">
+                                <label class="form-check-label" for="formCheck-1" style="text-align: left;width: 50px;">Day(s)</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="formCheck-4"
+                                       [(ngModel)]="rentWeekSelected">
+                                <label class="form-check-label" for="formCheck-1">Week(s)</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox"
+                                       [(ngModel)]="rentMonthSelected"
+                                       id="formCheck-3">
+                                <label class="form-check-label"
+                                       for="formCheck-1">Month(s)</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-xl-4"
+                     style="padding: 20px;border-width: 2px;border-style: none;border-right-width: 1px;border-right-style: dotted;">
+                    <div class="mx-auto testimonial-item mb-5 mb-lg-0">
+                        <i class="far fa-money-bill-alt"
+                           style="font-size: 50px;padding: 10px;color: var(--bs-cyan);"></i>
+                        <h5 style="padding: 0px;">Price</h5>
+                    </div>
+                    <div class="mx-auto testimonial-item mb-5 mb-lg-0">
+                        <p class="text-start font-weight-light mb-0" style="text-align: center;padding: 10px;">Set
+                            maximum price:&nbsp;</p>
+                        <p class="text-center font-weight-light mb-0"
+                           style="text-align: center;width: 300px;font-size: 12px;"></p>
+                    </div>
+                    <div class="row" style="padding: 5px;">
+                        <div class="col-xl-4" style="height: 30px;padding: 8px;">
+                            <p class="text-end">$</p>
+                        </div>
+                        <div class="col-xl-8" style="text-align: left;padding: 10px;">
+                            <input class="form-control" type="text" placeholder="Maximum Price" [(ngModel)]="maxPrice"
+                                   style="background: rgb(255, 255, 255);opacity: 0.57;border-top-width: 1px;border-top-style: solid;border-right-width: 1px;border-right-style: solid;border-bottom-width: 1px;border-bottom-style: solid;border-left-width: 1px;border-left-style: solid;">
+                        </div>
+                        <div class="col-xl-3" style="width: 73px;"></div>
+                        <div class="col">
+                            <div class="mx-auto testimonial-item mb-5 mb-lg-0"
+                                 style="padding: 10px;text-align: center;">
+                                <div class="form-check text-center" style="width: 166px;">
+                                    <input [(ngModel)]="totalPriceSelected"
+                                           class="form-check-input" type="checkbox" id="formCheck-2">
+                                    <label
+                                        class="form-check-label text-start" for="formCheck-1"
+                                        style="text-align: right;width: 200px;font-size: 14px;">&nbsp; &nbsp; &nbsp;
+                                        Total price&nbsp;</label></div>
+                            </div>
+                            <div class="mx-auto testimonial-item mb-5 mb-lg-0"
+                                 style="padding: 10px;text-align: center;">
+                                <div class="form-check text-center" style="width: 166px;">
+                                    <input [(ngModel)]="perPriceSelected"
+                                           class="form-check-input" type="checkbox" id="formCheck-10">
+                                    <label
+                                        class="form-check-label text-start" for="formCheck-1"
+                                        style="text-align: center;width: 200px;font-size: 14px;">&nbsp; &nbsp; &nbsp;
+                                        Price per day/week/month as&nbsp; &nbsp; &nbsp; &nbsp; selected above</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn-group" role="group"></div>
+                </div>
+                <div class="col-lg-4 col-xl-4"
+                     style="padding: 20px;border-right-width: 1px;border-right-style: dotted;">
+                    <div class="mx-auto testimonial-item mb-5 mb-lg-0"><i class="fas fa-search-location"
+                                                                          style="font-size: 50px;padding: 10px;color: var(--bs-cyan);"></i>
+                        <h5>Location</h5>
+                        <p class="text-start font-weight-light mb-0" style="padding: 10px;">Select maximum distance from
+                            your location:&nbsp;<br></p>
+                    </div>
+                    <div class="mx-auto testimonial-item mb-5 mb-lg-0" style="text-align: center;width: 120px;">
+                        <div class="form-check text-center" style="width: 166px;text-align: center;">
+                            <input [(ngModel)]="km1LocationSelected"
+                                   class="form-check-input" type="checkbox" id="formCheck-9"><label
+                            class="form-check-label text-start" for="formCheck-1"
+                            style="text-align: left;width: 100px;">1km</label></div>
+                        <div class="form-check text-center" style="width: 166px;text-align: center;">
+                            <input [(ngModel)]="km5LocationSelected"
+                                   class="form-check-input" type="checkbox" id="formCheck-7"><label
+                            class="form-check-label text-start" for="formCheck-1"
+                            style="text-align: left;width: 100px;">5km</label></div>
+                        <div class="form-check text-center" style="width: 166px;text-align: center;">
+                            <input [(ngModel)]="km10LocationSelected"
+                                   class="form-check-input" type="checkbox" id="formCheck-6"><label
+                            class="form-check-label text-start" for="formCheck-1"
+                            style="text-align: left;width: 100px;">10km</label></div>
+                        <div class="form-check text-center" style="width: 166px;text-align: center;">
+                            <input [(ngModel)]="km20LocationSelected"
+                                   class="form-check-input" type="checkbox" id="formCheck-5"><label
+                            class="form-check-label text-start" for="formCheck-1"
+                            style="text-align: left;width: 100px;">20km</label></div>
+                        <div class="form-check text-center" style="width: 166px;text-align: center;">
+                            <input [(ngModel)]="noneLocationSelected"
+                                   class="form-check-input" type="checkbox" id="formCheck-8"><label
+                            class="form-check-label text-start" for="formCheck-1"
+                            style="text-align: left;width: 100px;">None</label></div>
+                    </div>
+                    <div>
+                        <p style="padding: 20px;text-align: center;font-size: 13px;font-style: italic;">Default: no
+                            maximum distance</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-xl-4" style="padding: 20px;">
+                    <div class="mx-auto testimonial-item mb-5 mb-lg-0"><i class="far fa-grin-stars"
+                                                                          style="font-size: 50px;padding: 10px;color: var(--bs-cyan);"></i>
+                        <h5>Rating</h5>
+                        <p class="text-start font-weight-light mb-0" style="padding: 10px;">Select minimum lender
+                            rating:<br><br></p>
+                        <div class="row">
+                            <div class="col-xl-4" style="padding: 0.5px;">
+                                <input type="checkbox" [(ngModel)]="rating1Selected"
+                                       style="font-size: 12px;width: 16px;height: 16px;border-color: var(--bs-gray-500);color: var(--bs-gray);padding: 0.5px;">
+                            </div>
+                            <div class="col text-start" style="padding: 0.5px;"><i class="fa fa-star"
+                                                                                   style="color: var(--bs-cyan);padding: 0.5px;"></i>
+                            </div>
+                        </div>
+                        <div class="row" style="padding: 0.5px;">
+                            <div class="col-xl-4" style="padding: 0.5px;">
+                                <input type="checkbox" [(ngModel)]="rating2Selected"
+                                       style="font-size: 12px;width: 16px;height: 16px;border-color: var(--bs-gray-500);color: var(--bs-gray);padding: 0.5px;">
+                            </div>
+                            <div class="col text-start" style="padding: 0.5px;"><i class="fa fa-star"
+                                                                                   style="color: var(--bs-cyan);padding: 0.5px;"></i><i
+                                class="fa fa-star" style="color: var(--bs-cyan);padding: 0.5px;"></i></div>
+                        </div>
+                        <div class="row" style="padding: 0.5px;">
+                            <div class="col-xl-4" style="padding: 0.5px;">
+                                <input type="checkbox" [(ngModel)]="rating3Selected"
+                                       style="font-size: 12px;width: 16px;height: 16px;border-color: var(--bs-gray-500);color: var(--bs-gray);padding: 0.5px;">
+                            </div>
+                            <div class="col text-start" style="padding: 0.5px;"><i class="fa fa-star"
+                                                                                   style="color: var(--bs-cyan);padding: 0.5px;"></i><i
+                                class="fa fa-star" style="color: var(--bs-cyan);padding: 0.5px;"></i><i
+                                class="fa fa-star" style="color: var(--bs-cyan);padding: 0.5px;"></i></div>
+                        </div>
+                        <div class="row" style="padding: 0.5px;">
+                            <div class="col-xl-4" style="padding: 0.5px;">
+                                <input type="checkbox" [(ngModel)]="rating4Selected"
+                                       style="font-size: 12px;width: 16px;height: 16px;border-color: var(--bs-gray-500);color: var(--bs-gray);padding: 0.5px;">
+                            </div>
+                            <div class="col text-start" style="padding: 0.5px;"><i class="fa fa-star"
+                                                                                   style="color: var(--bs-cyan);padding: 0.5px;"></i><i
+                                class="fa fa-star" style="color: var(--bs-cyan);padding: 0.5px;"></i><i
+                                class="fa fa-star" style="color: var(--bs-cyan);padding: 0.5px;"></i><i
+                                class="fa fa-star" style="color: var(--bs-cyan);padding: 0.5px;"></i></div>
+                        </div>
+                        <div class="row" style="padding: 0.5px;">
+                            <div class="col-xl-4" style="padding: 0.5px;">
+                                <input type="checkbox" [(ngModel)]="rating5Selected"
+                                       style="font-size: 12px;width: 16px;height: 16px;border-color: var(--bs-gray-500);color: var(--bs-gray);padding: 0.5px;">
+                            </div>
+                            <div class="col text-start" style="padding: 0.5px;"><i class="fa fa-star"
+                                                                                   style="color: var(--bs-cyan);"></i><i
+                                class="fa fa-star" style="color: var(--bs-cyan);"></i><i class="fa fa-star"
+                                                                                         style="color: var(--bs-cyan);"></i><i
+                                class="fa fa-star" style="color: var(--bs-cyan);"></i><i class="fa fa-star"
+                                                                                         style="color: var(--bs-cyan);"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <p style="padding: 20px;text-align: center;font-size: 13px;font-style: italic;">Default: no
+                                minimum rating</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="padding: 50px;">
+            <button class="btn btn-primary btn-lg" data-bss-hover-animate="tada" type="submit" (click)="onSearched()"
+                    style="background: #009ea0;border-color: #009ea0;border-top-color: rgb(255,;border-right-color: 255,;border-bottom-color: 255);border-left-color: 255,;margin: 5px;">
+                Search
+            </button>
+        </div>
+    </section>
+</div>

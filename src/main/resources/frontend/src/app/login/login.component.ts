@@ -1,13 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {
     FormBuilder,
-    FormControl,
     FormGroup,
     Validators,
 } from '@angular/forms';
-import { Router } from '@angular/router';
-import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
-import { UserService } from '../services/user-services/user-service.service';
+import {BsModalRef} from 'ngx-bootstrap/modal';
+import {ToastrService} from 'ngx-toastr';
+import {User} from '../entities/User';
+import {AuthHttpService} from "../http/auth.http.service";
 
 @Component({
     selector: 'app-login',
@@ -15,37 +15,38 @@ import { UserService } from '../services/user-services/user-service.service';
     styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
+    loginForm: FormGroup;
 
-  loginForm: FormGroup = new FormGroup({
-    username: new FormControl('', [Validators.required]),
-    password: new FormControl('', [Validators.required])
-  });
+    constructor(
+        private readonly _fb: FormBuilder,
+        private readonly _bsModalRef: BsModalRef,
+        private readonly _toastr: ToastrService,
+        private readonly _authHttpService: AuthHttpService
+    ) {
+        this.loginForm = _fb.group({
+            username: ['', [Validators.required]],
+            password: ['', [Validators.required]],
+        });
+    }
 
+    ngOnInit(): void {
+    }
 
-  loading = false;
+    hideModal() {
+        this._bsModalRef.hide();
+    }
 
-  constructor(public bsModalRef: BsModalRef, private modalService: BsModalService, private userService: UserService, private router: Router) {
-
-   }
-
-   onSubmit() {
-     if (this.loginForm.invalid) {
-       return;
-     }
-     this.loading = true;
-     const username = this.loginForm.get('username')?.value;
-     const password = this.loginForm.get('password')?.value;
-     this.userService.authenticateUser(username, password).subscribe({
-       next: () => {
-         this.loading = false;
-         this.router.navigateByUrl('/profile');
-         this.bsModalRef.hide();
-       }
-     })
-   }
-
-  ngOnInit(): void {
-    this.userService.logout();
-  }
-
+    login() {
+        this._authHttpService.login(this.loginForm.value.username, this.loginForm.value.password).subscribe((res) => {
+            this._toastr.success('Login Successfully!');
+            // emit the user info
+            this._bsModalRef.onHide?.emit(res);
+            this._bsModalRef.hide();
+        }, () => {
+            this._toastr.error(
+                'Please double check the username and password',
+                'Login Failed!'
+            );
+        });
+    }
 }
