@@ -24,6 +24,7 @@
     "@fortawesome/fontawesome-free": "^5.15.4",
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "angular-file-uploader": "^7.1.0",
     "bootstrap": "^5.0.0-beta3",
     "ngx-bootstrap": "^7.1.0",
     "ngx-toastr": "^14.1.3",

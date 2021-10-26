@@ -1,133 +1,97 @@
-<header class="text-center text-white masthead" style="background-size: cover;">
-  <div class="d-lg-flex align-items-lg-start overlay" style="opacity: 0.60;"></div>
-  <div class="container">
-    <div class="row">
-      <div class="col-xl-9 mx-auto position-relative">
-        <h1 class="mb-5">Share household appliances with <br>your neighbours!</h1>
-      </div>
-      <div class="col-md-10 col-lg-8 col-xl-7 mx-auto position-relative">
-        <form>
-          <div (click)="searchForm.reset(); searching=false" class="row">
-            <form [formGroup]="searchForm">
-              <div class="row">
-                <div class="col-12 col-md-9 text-end mb-2 mb-md-0">
-                  <input [matAutocomplete]="auto" formControlName="search" (keypress)="searchItems($event.target?.value)" class="form-control" type="text" placeholder="Search an appliance..." style="margin: 10px;">
-                  <mat-autocomplete #auto="matAutocomplete">
-                    <mat-option *ngFor="let item of searchedItems" [value]="item.itemName">
-                      <a [routerLink]="['product-detail', item.id]" class="header">{{item.itemName}}</a>
-                    </mat-option>
-                  </mat-autocomplete>
-
-                </div>
-                <!-- <div class="col-12 col-md-3">
-                  <button class="btn btn-primary btn-lg" data-bss-hover-animate="tada" type="submit" style="background: #009ea0;border-color: #009ea0;border-top-color: rgb(255,255,255);border-left-color: rgb(255,255,255);margin: 5px;">Search</button>
-                </div> -->
-                <!-- <div [ngClass]="searching ? 'visible' : 'hidden'" class="results transition">
-                  <div *ngIf="searchedItems && searchedItems.length > 0; else notFound">
-                    <div class="ui list" *ngFor="let item of searchedItems">
-                      <div class="item">
-                        <i class="map marker icon"></i>
-                        <div class="content">
-                          <a [routerLink]="['product-detail', item.id]" class="header">{{item.itemName}}</a>
-                          <div class="description">{{item.itemDescription}}</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <ng-template #notFound>
-                      <a href="" class="result">Did not find any matching item</a>
-                  </ng-template>
-                </div> -->
-              </div>
-            </form>
-          </div>
-        </form>
-      </div>
-      </div>
-      </div>
-</header>
-<section class="text-center bg-light border rounded-pill testimonials" style="background: var(--bs-cyan);">
+ <header class="text-center text-white masthead"
+        style="background: url('/assets/img/home/header_bg.png');background-size: cover;padding-top: 12rem; padding-bottom: 12rem;position: relative;">
+    <div class="d-lg-flex align-items-lg-start overlay-cover" style="opacity: 0.60;"></div>
     <div class="container">
-        <h2 class="text-start mb-5">Explore Nearby</h2>
         <div class="row">
-            <div class="col-lg-3">
-                <div class="mx-auto testimonial-item mb-5 mb-lg-0"><img class="img-thumbnail img-fluid border rounded-0 mb-3" src="../../assets/img/dyson-dc50-animal-vacuum-cleaner-0.jpeg">
-                    <h5>Dyson Vacuum Cleaner</h5>
-                    <p class="font-weight-light mb-0" style="font-size: 12px;">"Dyson V7 Motorhead Cordless Vacuum is suitable for carpets and hard flooring."</p>
-                </div>
+            <div class="col-xl-9 mx-auto position-relative">
+                <h1 class="mb-5">Share household appliances with <br>your neighbours!</h1>
             </div>
-            <div class="col-lg-3">
-                <div class="mx-auto testimonial-item mb-5 mb-lg-0"><img class="img-thumbnail img-fluid mb-3" src="../../assets/img/f382fa85-9f97-491c-91b3-c7e41a06bbf9.png">
-                    <h5>Matador BBQ</h5>
-                    <p class="font-weight-light mb-0" style="font-size: 12px;">"The vitreous enamel grill and hotplate and large glass hood window make it an ideal BBQ"</p>
-                </div>
-            </div>
-            <div class="col-lg-3 offset-lg-0">
-                <div class="mx-auto testimonial-item mb-5 mb-lg-0"><img class="img-thumbnail img-fluid mb-3" src="../../assets/img/download%20(1).jpeg">
-                    <h5>KitchenAid Mixer</h5>
-                    <p class="font-weight-light mb-0" style="font-size: 12px;">"Can aid with mixing, dough kneading, whipping, pasta rolling, and meat grinding"</p>
-                </div>
-            </div>
-            <div class="col-lg-3 offset-lg-0">
-                <div class="mx-auto testimonial-item mb-5 mb-lg-0"><img class="img-thumbnail img-fluid mb-3" src="../../assets/img/download.jpeg">
-                    <h5>Karcher Pressure Cleaner</h5>
-                    <p class="font-weight-light mb-0" style="font-size: 12px;">"Ideal for cleaning cars, decks, pavers &amp; many other outdoor areas"</p>
-                </div>
+            <div class="col-md-10 col-lg-8 col-xl-7 mx-auto position-relative">
+                <form>
+                    <div class="row">
+                        <div class="col-12 col-md-9 text-end mb-2 mb-md-0"><input class="form-control" type="text"
+                                                                                  placeholder="Search an appliance..."
+                                                                                  style="margin: 10px;">
+                            <a [routerLink]="['/advance-filters']"
+                               class="text-start bounce animated" href="#" style="color: #dee2e6;">Advanced
+                                Search</a></div>
+                        <div class="col-12 col-md-3">
+                            <button class="btn btn-primary btn-lg" data-bss-hover-animate="tada" type="submit"
+                                    style="background: #009ea0;border-color: #009ea0;border-top-color: rgb(255,;border-right-color: 255,;border-bottom-color: 255);border-left-color: 255,;margin: 5px;">
+                                Search
+                            </button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
+    </div>
+</header>
+<section style="padding: 100px;background: #dce7e8;">
+    <div>
+        <h2 class="text-start mb-5" style="color: rgb(7,7,7);padding: 10px;">
+            <i class="fas fa-map-marker-alt" style="padding: 10px;color: rgb(17,18,18);"></i>&nbsp;&nbsp; Explore Nearby
+        </h2>
+    </div>
+    <div>
         <div class="row">
-            <div class="col-md-12 col-lg-3" style="text-align: center;">
-                <div style="text-align: center;"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half"></i></div>
-                <div><a href="#" style="font-size: 10px;height: 0px;width: 0px;">15 reviews</a></div>
+            <div class="col-lg-3" style="padding: 20px;background: transparent;text-align: center;"
+                 *ngFor="let item of products">
+                <img
+                    class="img-fluid border-info shadow-lg mb-3"
+                    src="assets/img/home/{{item.imagePathOne!}}"
+                    style="filter: hue-rotate(0deg) sepia(0%);height: 214.25px;width: 214.25px;">
+                <h5 style="height: 48px;">{{item.brand!}} {{item.category}}<br><br></h5>
+                <p class="font-weight-light mb-0" style="font-size: 12px; height: 50px;"><em>"{{item.itemDescription!}}
+                    "</em><br></p>
+                <div style="text-align: center;">
+                    <ng-container *ngFor="let fullStar of item.fullStarArr">
+                        <i class="fa fa-star"></i>
+                    </ng-container>
+                    <ng-container *ngIf="item.halfStar === 1">
+                        <i class="fa fa-star-half"></i>
+                    </ng-container>
+
+                </div>
+                <div style="text-align: center;">
+                    <a href="#" style="font-size: 10px;height: 0px;width: 0px;">{{item.reviewNum!}} reviews</a></div>
                 <div style="border-style: none;">
-                    <p class="text-center border rounded-0" style="font-size: 12px;border-style: none;">$3 per day&nbsp; &nbsp;| |&nbsp; &nbsp;$10 per week<br></p>
+                    <input class="form-control-plaintext" type="text"
+                           value="${{item.ratePerDay!}} per day || ${{item.ratePerWeek!}} per week" readonly=""
+                           style="font-size: 12px;text-align: center;"></div>
+                <div style="text-align: center;">
+                    <button class="btn btn-primary" data-bss-hover-animate="tada" type="button" (click)="navigateToDetail(1)"
+                            style="width: 50px;height: 30px;font-size: 11px;background: #17a2b8;border-color: #17a2b8;text-align: center;">
+                        View
+                    </button>
                 </div>
-                <div><button class="btn btn-primary" data-bss-hover-animate="tada" type="button"
-                             style="width: 50px;height: 30px;font-size: 11px;background: var(--bs-cyan);border-color: var(--bs-cyan);">View</button></div>
-            </div>
-            <div class="col-md-12 col-lg-3" style="text-align: center;">
-                <div style="text-align: center;"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div><a href="#" style="font-size: 10px;">30 reviews</a>
-                <div>
-                    <p class="text-center border rounded-0" style="font-size: 12px;">$10 per day&nbsp; &nbsp;| |&nbsp; &nbsp;$40 per week<br></p>
-                </div>
-                <div><button class="btn btn-primary" data-bss-hover-animate="tada" type="button"
-                             style="width: 50px;height: 30px;font-size: 11px;background: var(--bs-cyan);border-color: var(--bs-cyan);">View</button></div>
-            </div>
-            <div class="col-md-12 col-lg-3" style="text-align: center;">
-                <div style="text-align: center;"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div><a href="#" style="font-size: 10px;">3 reviews</a>
-                <div>
-                    <p class="text-center border rounded-0" style="font-size: 12px;">$3 per day&nbsp; &nbsp;| |&nbsp; &nbsp;$12 per week<br></p>
-                </div>
-                <div><button class="btn btn-primary" data-bss-hover-animate="tada" type="button"
-                             style="width: 50px;height: 30px;font-size: 11px;background: var(--bs-cyan);border-color: var(--bs-cyan);">View</button></div>
-            </div>
-            <div class="col-md-12 col-lg-3" style="text-align: center;">
-                <div style="text-align: center;"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half"></i></div><a href="#" style="font-size: 10px;">12 reviews</a>
-                <div>
-                    <p class="text-center border rounded-0" style="font-size: 12px;">$7 per day&nbsp; &nbsp;| |&nbsp; &nbsp;$30 per week<br></p>
-                </div>
-                <div><button class="btn btn-primary" data-bss-hover-animate="tada" type="button"
-                             style="width: 50px;height: 30px;font-size: 11px;background: var(--bs-cyan);border-color: var(--bs-cyan);">View</button></div>
             </div>
         </div>
     </div>
 </section>
-<section class="showcase">
-    <div class="container-fluid p-0">
-        <div class="row g-0">
-            <div class="col-lg-6 my-auto order-lg-1 showcase-text" style="padding: 50px;">
-                <h2>Become a Renter</h2>
-                <h2 style="color: rgb(255,255,255);">B</h2>
-                <h2></h2>
-                <p class="lead mb-0">Find an affordable, short-term appliance rental near you.&nbsp;</p>
+<section class="text-end showcase" style="background: #dce7e8;text-align: center;">
+    <h2 class="text-start mb-5" style="color: rgb(7,7,7);margin: 0px 100px;">
+        <i class="fas fa-user-friends" style="padding: 10px;color: rgb(17,18,18);"></i>Be Involved</h2>
+    <div class="container-fluid p-0" style="padding: 100px;text-align: center;">
+        <div style="margin: 0px 300px;">
+            <div class="row text-center"
+                 style="background: url('/assets/img/home/involved1.jpeg');padding: 10px;opacity: 0.81;height: 400px;filter: brightness(94%) contrast(101%) grayscale(0%) hue-rotate(0deg) invert(0%) sepia(0%);">
+                <div class="col align-self-end" style="opacity: 1;">
+                    <h1 class="bg-white border rounded-0"
+                        style="background: #00000000;filter: saturate(74%);font-weight: bold;">Become a Lender</h1>
+                    <p class="bg-white border rounded-0" style="font-weight: bold;">Earn extra income from items you
+                        already own</p>
+                </div>
             </div>
-            <div class="col"><img src="../../assets/img/Sunbeam-Gallerie-Metaliic-1000x759.jpeg" style="width: 700px;"></div>
-        </div>
-        <div class="row g-0">
-            <div class="col-lg-6 my-auto order-lg-1 showcase-text" style="padding: 0px;"><img src="../../assets/img/Screen%20Shot%202021-10-01%20at%203.52.28%20pm.png" style="width: 690px;height: 500px;"></div>
-            <div class="col offset-0 align-self-center">
-                <h2 style="padding: 0px;margin: 50px;">Become a Lender</h2>
-                <p class="lead mb-0" style="margin: 50px;">Earn extra income from items you already own.&nbsp;</p>
+            <div class="row" style="height: 30px;background: #dce7e8;"></div>
+            <div class="row text-center"
+                 style="background: url('/assets/img/home/involved2.jpeg');padding: 40px;opacity: 0.81;height: 400px;filter: brightness(94%) contrast(101%) grayscale(0%) hue-rotate(0deg) invert(0%) sepia(0%);">
+                <div class="col align-self-end" style="opacity: 1;">
+                    <h1 class="bg-white border rounded-0"
+                        style="background: #00000000;filter: saturate(74%);font-weight: bold;">Become a Renter</h1>
+                    <p class="bg-white border rounded-0" style="font-weight: bold;">Find an affordable, short-term
+                        appliance rental near you.&nbsp;</p>
+                </div>
             </div>
         </div>
     </div>

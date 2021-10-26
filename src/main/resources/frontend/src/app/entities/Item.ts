@@ -1,28 +1,16 @@
-import { Complaint } from "./Complaint";
-import { User } from "./User";
+import {Complaint} from "./Complaint";
+import {User} from "./User";
+import {ItemInformation} from "./ItemInformation";
 
 export class Item {
-    id: string;
-    lender: User;
+    id?: string;
+    lender?: User;
     itemName: string;
     category: string;
-    itemInformation: ItemInformation;
     itemDescription: string;
+    itemInformation: ItemInformation;
     available: boolean;
     availableFrom: Date;
     itemPrice: number;
-    complaints: Complaint[];
-
-}
-
-export class ItemInformation {
-  id: number;
-  brand: string;
-  modelNumber: string;
-  serialNumber: string;
-  itemCondition: string;
-  rentalPricePerDay: string;
-  rentalPricePerWeek: string;
-  rentalPricePerMonth: string;
-  yearPurchase: number;
+    complaints?: Complaint[];
 }

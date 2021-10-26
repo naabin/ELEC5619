@@ -35,21 +35,21 @@
         </h3>
         <div class="row text-center">
             <div class="col text-center" style="text-align: center;"><img
-                src="assets/img/detail/{{productDetail.imagePathOne}}" style="text-align: center;padding: 10px;"
+                src="assets/img/detail/{{productDetail.imagePathOne!}}" style="text-align: center;padding: 10px;"
                 width="600px" height="500px"></div>
         </div>
         <div class="row">
             <div class="col text-end" style="text-align: center;padding: 10px;"><img
-                src="assets/img/detail/{{productDetail.imagePathOne}}" width="300px" height="250px"
+                src="assets/img/detail/{{productDetail.imagePathOne!}}" width="300px" height="250px"
                 style="text-align: center;"></div>
             <div class="col text-start" style="text-align: center;padding: 10px;"><img
-                src="assets/img/detail/{{productDetail.imagePathThree}}" width="300px" height="250px"></div>
+                src="assets/img/detail/{{productDetail.imagePathThree!}}" width="300px" height="250px"></div>
         </div>
     </div>
     <div style="padding: 50px;border-bottom-style: inset;">
         <h3 style="text-align: left;"><i class="far fa-edit" style="font-size: 30px;padding: 20px;"></i>Description</h3>
         <p style="padding: 20px;text-align: left;box-shadow: 0px 0px 0px;"
-           [innerHTML]="productDetail.itemDescription"></p>
+           [innerHTML]="productDetail.itemDescription!"></p>
     </div>
     <div style="padding: 50px;border-bottom-style: inset;">
         <h3 style="padding: 0px 0px 20px;text-align: left;"><i class="fas fa-tools"
@@ -60,7 +60,7 @@
                 <p style="text-align: left;">Category:</p>
             </div>
             <div class="col-sm-5 col-md-8 col-xl-5 col-xxl-2" style="text-align: left;">
-                <p>{{productDetail.category}}</p>
+                <p>{{productDetail.category!}}</p>
             </div>
         </div>
         <div class="row" style="text-align: right;width: 600px;">
@@ -68,7 +68,7 @@
                 <p style="text-align: left;">Brand:</p>
             </div>
             <div class="col-sm-5 col-md-8 col-xl-5 col-xxl-2" style="text-align: left;">
-                <p>{{productDetail.brand}}</p>
+                <p>{{productDetail.brand!}}</p>
             </div>
         </div>
         <div class="row" style="text-align: right;width: 600px;">
@@ -76,7 +76,7 @@
                 <p style="text-align: left;">Model Number:&nbsp;</p>
             </div>
             <div class="col-sm-5">
-                <p style="text-align: left;">{{productDetail.modelNum}}</p>
+                <p style="text-align: left;">{{productDetail.modelNum!}}</p>
             </div>
         </div>
         <div class="row" style="text-align: right;width: 600px;">
@@ -84,7 +84,7 @@
                 <p style="text-align: left;">Serial Number</p>
             </div>
             <div class="col-sm-5">
-                <p style="text-align: left;">{{productDetail.serialNum}}</p>
+                <p style="text-align: left;">{{productDetail.serialNum!}}</p>
             </div>
         </div>
         <div class="row" style="text-align: right;width: 600px;">
@@ -92,7 +92,7 @@
                 <p style="text-align: left;">Year Purchased</p>
             </div>
             <div class="col-sm-5">
-                <p style="text-align: left;">{{productDetail.yearPurchased}}</p>
+                <p style="text-align: left;">{{productDetail.yearPurchased!}}</p>
             </div>
         </div>
         <div class="row" style="text-align: center;width: 600px;">
@@ -100,7 +100,7 @@
                 <p style="text-align: left;">Condition</p>
             </div>
             <div class="col-sm-5">
-                <p style="text-align: left;">{{productDetail.condition}}</p>
+                <p style="text-align: left;">{{productDetail.condition!}}</p>
             </div>
         </div>
     </div>
@@ -110,7 +110,7 @@
         <div class="row" style="text-align: right;width: 600px;">
             <div class="col text-center" style="padding: 0px 0px 30px ;">
                 <img class="rounded-circle"
-                     src="assets/img/detail/{{productDetail.lender.avatar}}"
+                     src="assets/img/detail/{{productDetail.lender?.avatar!}}"
                      width="250px" height="250px"
                      style="padding: 20px;">
             </div>
@@ -120,7 +120,7 @@
                 <p style="text-align: left;">First Name:</p>
             </div>
             <div class="col-sm-5 col-md-8 col-xl-5 col-xxl-2" style="text-align: left;">
-                <p>{{productDetail.lender.name}}</p>
+                <p>{{productDetail.lender?.name!}}</p>
             </div>
         </div>
         <div class="row" style="text-align: right;width: 600px;">
@@ -128,7 +128,7 @@
                 <p style="text-align: left;">Location</p>
             </div>
             <div class="col-sm-5 col-md-8 col-xl-5 col-xxl-2" style="text-align: left;">
-                <p>{{productDetail.lender.address?.country}}</p>
+                <p>{{productDetail.lender?.address?.country}}</p>
             </div>
         </div>
     </div>
@@ -201,7 +201,8 @@
         </div>
         <h5 style="text-align: right;padding: 10px;">Calculated Total: ${{total}}</h5>
         <button class="btn btn-primary" data-bss-hover-animate="tada" type="button"
-                style="text-align: right;background: #17a2b8;border-color: #17a2b8;border-right-color: #17a2b8;font-size: 20px;">
+                style="text-align: right;background: #17a2b8;border-color: #17a2b8;border-right-color: #17a2b8;font-size: 20px;"
+                (click)="payment()">
             Continue to Payment
         </button>
     </div>

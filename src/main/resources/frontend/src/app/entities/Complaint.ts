@@ -5,5 +5,4 @@ export class Complaint {
     complainedItem: Item;
     renter: User;
     lender: User;
-    
 }

@@ -70,16 +70,17 @@ public class ItemController {
     }
 
     @PostMapping("/upload-image/{itemId}")
-    public ResponseEntity<?> uploadImage(@PathVariable("itemId")Long id, @RequestParam("imageFile")MultipartFile file) throws ResourceNotFoundException, IOException {
+    public ResponseEntity<?> uploadImage(@PathVariable("itemId")Long id, @RequestParam("file0")MultipartFile file) throws ResourceNotFoundException, IOException {
         Item item = this.itemService.findById(id).orElseThrow(() -> new ResourceNotFoundException("Item with " + id + " does not exist"));
         Image image = new Image();
+        image.setImageItem(item);
         image.setName(file.getOriginalFilename());
         image.setType(file.getContentType());
         LOGGER.info("Original file size in bytes: " + file.getBytes().length);
         image.setImageBytes(file.getBytes());
         Image uploadedImage = this.imageService.save(image);
-        item.addImage(uploadedImage);
-        Item updatedItem = this.itemService.update(item);
-        return ResponseEntity.ok().body(updatedItem);
+//        item.addImage(uploadedImage);
+//        Item updatedItem = this.itemService.update(item);
+        return ResponseEntity.ok().body(uploadedImage);
     }
 }

@@ -56,6 +56,7 @@ export class RentNavComponent implements OnInit {
         this.currentUser = currentUser;
         // set the current user to localstorage
         localStorage.setItem('user', JSON.stringify(this.currentUser));
+        localStorage.setItem('token', JSON.stringify(this.currentUser?.token));
       });
   }
 

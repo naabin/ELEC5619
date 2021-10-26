@@ -1,25 +1,29 @@
 <nav class="navbar navbar-light navbar-expand bg-light navigation-clean">
-    <div class="container"><a class="navbar-brand" href="/">
-        <strong>Easy Share</strong></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"></button>
-        <div class="collapse navbar-collapse" id="navcol-1">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link active" href="/">Main Feed</a></li>
-                <li class="nav-item"><a class="nav-link" [routerLink]="'profile'">My Profile</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Messages</a></li>
-            </ul>
-            <ul class="navbar-nav">
-                <li class="nav-item"></li>
-                <li class="nav-item"></li>
-                <li class="nav-item"></li>
-            </ul>
-            <ul class="navbar-nav"></ul>
-            <ul class="navbar-nav">
-                <li class="nav-item"></li>
-                <li class="nav-item"></li>
-                <li class="nav-item"></li>
-            </ul>
-            <button (click)="openLoginModal()" class="btn btn-primary" type="button" style="background: var(--bs-cyan);opacity: 1;border-color: var(--bs-cyan);">Sign In</button>
-            <button (click)="openSignupModal()" class="btn btn-primary" type="button" style="margin: 10px;background: var(--bs-cyan);border-color: var(--bs-cyan);">Sign Up</button>
-        </div>
+  <div class="container"><a class="navbar-brand" href="/">
+      <strong>Easy Share</strong></a><button data-bs-toggle="collapse" class="navbar-toggler"
+      data-bs-target="#navcol-1"></button>
+    <div class="collapse navbar-collapse" id="navcol-1">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" [ngClass]="{'active': '/' === currentUrl}" [routerLink]="['/']">Main
+            Feed</a></li>
+        <li class="nav-item" *ngIf="currentUser"><a class="nav-link"
+            [ngClass]="{'active': '/my-profile' === currentUrl}" [routerLink]="['/my-profile']">My Profile</a></li>
+        <li class="nav-item" *ngIf="currentUser"><a class="nav-link"
+            [ngClass]="{'active': '/create-listing' === currentUrl}" [routerLink]="['/create-listing']">Messages</a>
+        </li>
+      </ul>
+      <div *ngIf="currentUser" class="esk-ml-2 esk-fs-20">
+        <fa-icon [icon]="faUserCircle"></fa-icon>
+        <b class="esk-ml-1">{{currentUser.username}}</b>
+        <button (click)="logout()" class="btn btn-primary esk-ml-1" type="button"
+          style="background: var(--bs-cyan);opacity: 0.44;border-color: var(--bs-cyan);">Logout</button>
+      </div>
+      <div *ngIf="!currentUser" class="esk-ml-2">
+        <button (click)="openLoginModal()" class="btn btn-primary" type="button"
+          style="background: var(--bs-cyan);opacity: 1;border-color: var(--bs-cyan);">Sign In</button>
+        <button (click)="openSignupModal()" class="btn btn-primary" type="button"
+          style="margin: 10px;background: var(--bs-cyan);border-color: var(--bs-cyan);">Sign Up</button>
+      </div>
     </div>
+  </div>
 </nav>

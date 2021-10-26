@@ -1,42 +1,39 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
-import { Item } from '../entities/Item';
-import { ItemService } from '../services/item-service/item.service';
+import {Component, OnInit} from '@angular/core';
+import {Router} from "@angular/router";
+import {ProductHttpService} from "../http/product.http.service";
+import {ProductDetail} from "../entities/ProductDetail";
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+    selector: 'app-home',
+    templateUrl: './home.component.html',
+    styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit, OnChanges {
+export class HomeComponent implements OnInit {
 
-  constructor(private readonly _router: Router, private itemService: ItemService) { }
+    products: ProductDetail[] = [];
 
-  ngOnInit(): void {
-  }
+    constructor(private readonly _router: Router,
+                private readonly _productHttpService: ProductHttpService) {
+    }
 
-  searchForm = new FormGroup({
-    search: new FormControl('')
-  });
-  searchedItems: Item[];
-  searching = false;
+    ngOnInit(): void {
+        this._productHttpService.fetchProductList().subscribe((products) => {
+            this.products = products;
 
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
-  }
+            // calculate the full star and half star
+            this.products.map((product) => {
+                const totalHalfStar = product.rateNum! / 0.5;
+                product.halfStar = totalHalfStar % 2;
+                product.fullStarArr = [];
+                for (let i = 0; i < product.rateNum!; i++) {
+                    product.fullStarArr.push(1);
+                }
+                return product;
+            })
+        })
+    }
 
-  searchItems(searchQuery: string) {
-    const subject = new BehaviorSubject<string>(searchQuery);
-    subject.pipe(
-      switchMap((searchValue) => {
-        this.searching = true;
-        return this.itemService.getAllBySearchQuery(searchValue);
-      })
-    ).subscribe((data) => {
-      this.searchedItems = data;
-    })
-  }
+    navigateToDetail(productNum: number) {
+        this._router.navigate(["/product-detail", productNum])
+    }
 }

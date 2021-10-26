@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ProductDetailHttpService} from "../http/product-detail.http.service";
+import {ProductHttpService} from "../http/product.http.service";
 import {ActivatedRoute} from "@angular/router";
 import {ProductDetail} from "../entities/ProductDetail";
 import {ToastrService} from "ngx-toastr";
@@ -25,16 +25,16 @@ export class ProductDetailComponent implements OnInit {
     targetWeek: number;
     targetMonth: number;
 
-    constructor(private readonly _productDetailHttpService: ProductDetailHttpService,
+    constructor(private readonly _productHttpService: ProductHttpService,
                 private readonly _activatedRoute: ActivatedRoute,
                 private readonly _toaster: ToastrService) {
     }
 
     ngOnInit(): void {
-        this._productDetailHttpService.fetchProductDetailById(this._activatedRoute.snapshot.params.id)
+        this._productHttpService.fetchProductDetailById(this._activatedRoute.snapshot.params.id)
             .subscribe((detail: ProductDetail) => {
                 this.productDetail = detail;
-                this.calcStarNum(this.productDetail.rateNum);
+                this.calcStarNum(this.productDetail.rateNum!);
             })
 
     }
@@ -59,13 +59,13 @@ export class ProductDetailComponent implements OnInit {
     get total(): number {
         let total = 0;
         if (this.selectedRateDay) {
-            total += this.targetDay * this.productDetail.ratePerDay ? this.targetDay * this.productDetail.ratePerDay : 0;
+            total += this.targetDay * this.productDetail.ratePerDay! ? this.targetDay * this.productDetail.ratePerDay! : 0;
         }
         if (this.selectedRateWeek) {
-            total += this.targetWeek * this.productDetail.ratePerWeek ? this.targetWeek * this.productDetail.ratePerWeek : 0;
+            total += this.targetWeek * this.productDetail.ratePerWeek! ? this.targetWeek * this.productDetail.ratePerWeek! : 0;
         }
         if (this.selectedRateMonth) {
-            total += this.targetMonth * this.productDetail.ratePerMonth ? this.targetMonth * this.productDetail.ratePerMonth : 0;
+            total += this.targetMonth * this.productDetail.ratePerMonth! ? this.targetMonth * this.productDetail.ratePerMonth! : 0;
         }
         return total;
     }

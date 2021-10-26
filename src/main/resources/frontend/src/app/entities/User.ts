@@ -1,3 +1,4 @@
+import { } from './Address';
 import { Address } from './Address';
 import { Payment } from './Payment';
 import { UserRole } from './UserRole';
@@ -15,5 +16,6 @@ export class User {
   ratings?: number;
   payment?: Payment;
   userRoles?: Set<UserRole>;
+
   token?: string;
 }
