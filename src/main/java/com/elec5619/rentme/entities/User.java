@@ -38,6 +38,9 @@ public class User implements UserDetails {
     @NotEmpty(message = "Password field cannot be empty")
     private String password;
 
+    @Column
+    private String phone;
+
     @OneToOne
     private Address address;
 

@@ -52,7 +52,7 @@ public class ItemService  implements GeneralService<Item> {
     }
 
     public List<Item> getAllUserItems(Long lenderId) {
-        return this.itemRepository.findAllByLender(lenderId);
+        return this.itemRepository.findItemsByLenderId(lenderId);
     }
 
     public List<Item> getAllItemByName(String query) {

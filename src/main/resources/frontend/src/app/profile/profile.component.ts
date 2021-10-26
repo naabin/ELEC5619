@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { User } from '../entities/User';
+import { ItemService } from '../services/item-service/item.service';
 import { UserService } from '../services/user-services/user-service.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { UserService } from '../services/user-services/user-service.service';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private itemService: ItemService) { }
 
   userFg = new FormGroup({
     name: new FormControl(''),
@@ -24,9 +25,15 @@ export class ProfileComponent implements OnInit {
   currentUser: User;
   ngOnInit(): void {
     const userId = localStorage.getItem('userId');
-    this.userService.getUserById(Number(userId)).subscribe(data => {
-      console.log(data);
-    })
+    if (userId !== null) {
+      this.userService.getUserById(parseInt(userId)).subscribe(data => {
+        this.currentUser = data;
+      })
+
+      this.itemService.getItemsByLenderId(parseInt(userId)).subscribe(data => {
+        console.log(data);
+      })
+    }
   }
 
 }

@@ -4,7 +4,7 @@
   <div class="container" style="margin-top: -200px;">
     <div class="row">
       <div class="col-xl-9 mx-auto position-relative">
-        <h1 class="mb-5">Hello, </h1> <!--This will also come from the backend-->
+        <h1 class="mb-5">Hello, {{currentUser?.name}}</h1> <!--This will also come from the backend-->
       </div>
     </div>
   </div>
@@ -34,7 +34,7 @@
             <div class="col">
               <div class="row">
                 <div class="col">
-                  <input class="form-control-plaintext" type="text" formControlName="name"></div>
+                  <input [value]="currentUser?.name" class="form-control-plaintext" type="text" formControlName="name"></div>
               </div>
             </div>
           </div>
@@ -48,7 +48,7 @@
             <div class="col">
               <div class="row">
                 <div class="col">
-                  <input class="form-control-plaintext" type="text" formControlName="email"></div>
+                  <input [value]="currentUser?.email" class="form-control-plaintext" type="text" formControlName="email"></div>
               </div>
             </div>
           </div>
@@ -61,7 +61,7 @@
             </div>
             <div class="col">
               <div class="row">
-                <div class="col"><input class="form-control-plaintext" type="text" formControlName="phone"></div>
+                <div class="col"><input [value]="currentUser?.phone" class="form-control-plaintext" type="text" formControlName="phone"></div>
               </div>
             </div>
           </div>
@@ -89,7 +89,7 @@
             </div>
             <div class="col">
               <div class="row">
-                <div class="col"><input class="form-control-plaintext" type="text" formControlName="detailAddress"
+                <div class="col"><input [value]="currentUser?.address?.streetAddress" class="form-control-plaintext" type="text" formControlName="detailAddress"
                     style="height: 38px;"></div>
               </div>
             </div>
@@ -140,7 +140,6 @@
       </div>
       <div class="col">
         <div></div>
-        <!-- Make sure this things comes from the backend -->
         <h3 class="text-start" style="padding: 30px;">My Appliances</h3>
         <div style="padding: 20px;text-align: center;height: 400px;">
           <h5 class="text-center"></h5><img class="img-thumbnail"
