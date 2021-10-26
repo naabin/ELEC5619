@@ -16,4 +16,6 @@ export class User {
   ratings?: number;
   payment?: Payment;
   userRoles?: Set<UserRole>;
+
+  token?: string;
 }

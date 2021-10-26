@@ -18,8 +18,10 @@ import {MyProfileComponent} from './my-profile/my-profile.component';
 import {CreateListingComponent} from './create-listing/create-listing.component';
 import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
 import {ProductDetailComponent} from './product-detail/product-detail.component';
-import {HttpClientModule} from "@angular/common/http";
-import { AdvanceFiltersComponent } from './advance-filters/advance-filters.component';
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {AdvanceFiltersComponent} from './advance-filters/advance-filters.component';
+import {JwtInterceptor} from "./helpers/JwtInterceptor";
+import {AngularFileUploaderModule} from "angular-file-uploader";
 
 @NgModule({
     declarations: [
@@ -44,9 +46,14 @@ import { AdvanceFiltersComponent } from './advance-filters/advance-filters.compo
         ToastrModule.forRoot(),
         FontAwesomeModule,
         BsDropdownModule.forRoot(),
-        HttpClientModule
+        HttpClientModule,
+        AngularFileUploaderModule
     ],
-    providers: [],
+    providers: [{
+        provide: HTTP_INTERCEPTORS,
+        useClass: JwtInterceptor,
+        multi: true
+    }],
     bootstrap: [AppComponent]
 })
 export class AppModule {

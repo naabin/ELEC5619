@@ -57,14 +57,6 @@ public class ItemInformation {
         this.serialNumber = serialNumber;
     }
 
-    public String getCondition() {
-        return itemCondition;
-    }
-
-    public void setCondition(String condition) {
-        this.itemCondition = condition;
-    }
-
     public Double getRentalPricePerDay() {
         return rentalPricePerDay;
     }
@@ -87,5 +79,21 @@ public class ItemInformation {
 
     public void setRentalPricePerMonth(Double rentalPricePerMonth) {
         this.rentalPricePerMonth = rentalPricePerMonth;
+    }
+
+    public String getItemCondition() {
+        return itemCondition;
+    }
+
+    public void setItemCondition(String itemCondition) {
+        this.itemCondition = itemCondition;
+    }
+
+    public Integer getYearPurchased() {
+        return yearPurchased;
+    }
+
+    public void setYearPurchased(Integer yearPurchased) {
+        this.yearPurchased = yearPurchased;
     }
 }
