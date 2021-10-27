@@ -6,7 +6,6 @@ import {
 } from '@angular/forms';
 import {BsModalRef} from 'ngx-bootstrap/modal';
 import {ToastrService} from 'ngx-toastr';
-import {User} from '../entities/User';
 import {AuthHttpService} from "../http/auth.http.service";
 
 @Component({

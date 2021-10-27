@@ -16,20 +16,22 @@ public class Address {
     private String streetAddress;
 
     @Column
-    @NotNull
     private String suburb;
 
     @Column
-    @NotNull
     private String state;
 
     @Column
-    @NotNull
     private String postCode;
 
     @Column
-    @NotNull
     private String country;
+
+    @Column
+    private Double lat;
+
+    @Column
+    private Double lng;
 
     public Long getId() {
         return id;
@@ -79,4 +81,19 @@ public class Address {
         this.country = country;
     }
 
+    public Double getLat() {
+        return lat;
+    }
+
+    public void setLat(Double lat) {
+        this.lat = lat;
+    }
+
+    public Double getLng() {
+        return lng;
+    }
+
+    public void setLng(Double lng) {
+        this.lng = lng;
+    }
 }

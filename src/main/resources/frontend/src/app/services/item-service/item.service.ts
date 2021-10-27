@@ -30,4 +30,12 @@ export class ItemService {
   getItemsByLenderId(lenderId: number) {
     return this.http.get<Item[]>(this.remoteUrl + `/api/item/lender-items/${lenderId}`);
   }
+
+  getNearbyItems(): Observable<Item[]> {
+      const user = JSON.parse(localStorage.getItem('user') || '');
+      if (user && user?.id) {
+        return this.http.get<Item[]>(`/api/item/get-items-nearby/${user?.id}`, {})
+      }
+      throw Error();
+  }
 }

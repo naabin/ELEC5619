@@ -37,6 +37,12 @@ public class UserController {
         return ResponseEntity.ok().body(newUser);
     }
 
+    @PostMapping()
+    public ResponseEntity<?> userRegistration(@Valid @RequestBody User user) {
+        User newUser = createUser(user, "ROLE_USER");
+        return ResponseEntity.ok().body(newUser);
+    }
+
     @PostMapping("/renter")
     public ResponseEntity<?> renterRegistration(@Valid @RequestBody User user) {
         User newUser = createUser(user, "ROLE_RENTER");

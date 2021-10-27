@@ -5,4 +5,6 @@ export class Address {
     state?: string;
     postcode?: string;
     country?: string;
+    lat?: number;
+    lng?: number;
 }

@@ -83,4 +83,11 @@ public class ItemController {
 //        Item updatedItem = this.itemService.update(item);
         return ResponseEntity.ok().body(uploadedImage);
     }
+
+    @GetMapping("/get-items-nearby/{userId}")
+    public ResponseEntity<?> getItemsNearby(@PathVariable("userId")Long userId) {
+        User user = this.userService.findUserById(userId).orElseThrow(() -> new UsernameNotFoundException("No such user exist"));
+        List<Item> items = this.itemService.getItemsNearby(user);
+        return ResponseEntity.ok().body(items);
+    }
 }

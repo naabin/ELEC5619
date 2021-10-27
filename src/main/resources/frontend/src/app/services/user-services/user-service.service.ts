@@ -35,12 +35,12 @@ export class UserService {
     return this.http.post<any>(`${this.remoteUrl}api/user/validatetoken`, {}, {params: {resetToken: token}});
   }
 
-  registerLender(user: User): Observable<any> {
-    return this.http.post<User>(this.remoteUrl + '/api/user/lender', JSON.stringify(user), this.httpOptions);
+  registerUser(user: User): Observable<any> {
+    return this.http.post<User>('/api/user', JSON.stringify(user), this.httpOptions);
   }
 
   registerRenter(user: User): Observable<any> {
-    return this.http.post<User>(this.remoteUrl + '/api/user/renter', JSON.stringify(user), this.httpOptions);
+    return this.http.post<User>('/api/user/renter', JSON.stringify(user), this.httpOptions);
   }
 
   authenticateUser(username: string, password: string) {
