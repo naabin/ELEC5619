@@ -34,7 +34,7 @@ export class ItemService {
   getNearbyItems(): Observable<Item[]> {
       const user = JSON.parse(localStorage.getItem('user') || '');
       if (user && user?.id) {
-        return this.http.get<Item[]>(`/api/item/get-items-nearby/${user?.id}`, {})
+        return this.http.get<Item[]>(`${this.remoteUrl}/api/item/get-items-nearby/${user?.id}`, {})
       }
       throw Error();
   }

@@ -27,13 +27,19 @@
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+                {
+                    "glob": "**/*",
+                    "input": "node_modules/leaflet/dist/images/",
+                    "output": "./assets"
+                }
             ],
             "styles": [
               "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
               "./node_modules/@fortawesome/fontawesome-free/css/all.css",
               "./node_modules/ngx-toastr/toastr.css",
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+                "node_modules/leaflet/dist/leaflet.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -78,8 +84,7 @@
               "browserTarget": "frontend:build:production"
             },
             "development": {
-              "browserTarget": "frontend:build:development",
-              "proxyConfig": "./proxy.local.conf.js"
+              "browserTarget": "frontend:build:development"
             }
           },
           "defaultConfiguration": "development"
