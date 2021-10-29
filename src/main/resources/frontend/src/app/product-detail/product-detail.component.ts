@@ -3,6 +3,9 @@ import {ProductHttpService} from "../http/product.http.service";
 import {ActivatedRoute} from "@angular/router";
 import {ProductDetail} from "../entities/ProductDetail";
 import {ToastrService} from "ngx-toastr";
+import {ItemHttpService} from "../http/item.http.service";
+import {Item} from "../entities/Item";
+import {CalculateUtil} from "../core/calculate.util";
 
 @Component({
     selector: 'app-product-detail',
@@ -11,11 +14,7 @@ import {ToastrService} from "ngx-toastr";
 })
 export class ProductDetailComponent implements OnInit {
 
-    fullStar = 0;
-    halfStar = 0;
-    fullStarArr: number[] = [];
-
-    productDetail: ProductDetail;
+    item: Item;
 
     selectedRateDay = false;
     selectedRateWeek = false;
@@ -25,27 +24,18 @@ export class ProductDetailComponent implements OnInit {
     targetWeek: number;
     targetMonth: number;
 
-    constructor(private readonly _productHttpService: ProductHttpService,
+    constructor(private readonly _itemHttpService: ItemHttpService,
                 private readonly _activatedRoute: ActivatedRoute,
                 private readonly _toaster: ToastrService) {
     }
 
     ngOnInit(): void {
-        this._productHttpService.fetchProductDetailById(this._activatedRoute.snapshot.params.id)
-            .subscribe((detail: ProductDetail) => {
-                this.productDetail = detail;
-                this.calcStarNum(this.productDetail.rateNum!);
+        this._itemHttpService.fetchItemById(this._activatedRoute.snapshot.params.id)
+            .subscribe((item: Item) => {
+                this.item = item;
+                CalculateUtil.calcStarNum(this.item);
             })
 
-    }
-
-    calcStarNum(star: number): void {
-        const totalHalfStar = star / 0.5;
-        this.halfStar = totalHalfStar % 2;
-        this.fullStar = star - this.halfStar * 0.5;
-        for (let i = 0; i < this.fullStar; i++) {
-            this.fullStarArr.push(1);
-        }
     }
 
     payment() {
@@ -59,13 +49,13 @@ export class ProductDetailComponent implements OnInit {
     get total(): number {
         let total = 0;
         if (this.selectedRateDay) {
-            total += this.targetDay * this.productDetail.ratePerDay! ? this.targetDay * this.productDetail.ratePerDay! : 0;
+            total += this.targetDay * this.item.itemInformation.rentalPricePerDay! ? this.targetDay * this.item.itemInformation.rentalPricePerDay! : 0;
         }
         if (this.selectedRateWeek) {
-            total += this.targetWeek * this.productDetail.ratePerWeek! ? this.targetWeek * this.productDetail.ratePerWeek! : 0;
+            total += this.targetWeek * this.item.itemInformation.rentalPricePerWeek! ? this.targetWeek * this.item.itemInformation.rentalPricePerWeek! : 0;
         }
         if (this.selectedRateMonth) {
-            total += this.targetMonth * this.productDetail.ratePerMonth! ? this.targetMonth * this.productDetail.ratePerMonth! : 0;
+            total += this.targetMonth * this.item.itemInformation.rentalPricePerMonth! ? this.targetMonth * this.item.itemInformation.rentalPricePerMonth! : 0;
         }
         return total;
     }

@@ -23,6 +23,7 @@ import {AdvanceFiltersComponent} from './advance-filters/advance-filters.compone
 import {JwtInterceptor} from "./helpers/JwtInterceptor";
 import {AngularFileUploaderModule} from "angular-file-uploader";
 import { MapComponent } from './map/map.component';
+import { SearchResultComponent } from './search-result/search-result.component';
 
 @NgModule({
     declarations: [
@@ -36,7 +37,8 @@ import { MapComponent } from './map/map.component';
         CreateListingComponent,
         ProductDetailComponent,
         AdvanceFiltersComponent,
-        MapComponent
+        MapComponent,
+        SearchResultComponent
     ],
     imports: [
         ModalModule.forRoot(),

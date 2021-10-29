@@ -13,4 +13,10 @@ export class Item {
     availableFrom: Date;
     itemPrice: number;
     complaints?: Complaint[];
+
+    // default rating number
+    rating? = 4.5;
+    // calculated star
+    fullStarArr?: number[];
+    existHalfStar?: boolean;
 }

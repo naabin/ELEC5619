@@ -17,6 +17,12 @@ const PROXY_CONFIG = [
         target: 'http://localhost:8080',
         secure: false,
         bypass: preventBrowserCalls
+    },
+    {
+        context: ['/public'],
+        target: 'http://localhost:8080',
+        secure: false,
+        bypass: preventBrowserCalls
     }
 ]
 module.exports = PROXY_CONFIG;

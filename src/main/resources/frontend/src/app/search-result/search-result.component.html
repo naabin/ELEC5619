@@ -1,0 +1,104 @@
+<header
+    *ngIf="isSimpleSearch"
+    style="padding: 50px 100px;background: #a2bdbf;filter: blur(0px) brightness(108%) contrast(100%) saturate(79%);">
+    <div>
+        <h2 style="padding: 10px 10px 50px;">Simple Search</h2>
+        <div class="row" style="padding: 10px;">
+            <div class="col" style="box-shadow: 0px 0px;">
+                <p style="box-shadow: 0px 0px;"><strong><em>Appliance Name: {{applianceName}}</em></strong></p>
+            </div>
+        </div>
+        <div class="text-end" style="padding: 30px 10px 10px 10px;">
+            <button class="btn btn-primary" data-bss-hover-animate="tada" type="button"
+                    style="background: #0d6a78;padding: 10px;border-top-color: #0d6a78;"
+                    [routerLink]="['/']">
+                New Search
+            </button>
+        </div>
+    </div>
+</header>
+<header
+    *ngIf="!isSimpleSearch"
+    style="padding: 50px 100px;background: #a2bdbf;filter: blur(0px) brightness(108%) contrast(100%) saturate(79%);">
+    <div>
+        <h2 style="padding: 10px 10px 50px;">Advanced Search Filters</h2>
+        <div class="row" style="padding: 10px;">
+            <div class="col" style="box-shadow: 0px 0px;">
+                <p style="box-shadow: 0px 0px;"><strong><em>Appliance Category: {{applianceCategory}}</em></strong></p>
+            </div>
+            <div class="col" style="box-shadow: 0px 0px;">
+                <p style="box-shadow: 0px 0px;"><strong><em>Rental Length: {{rent}}</em></strong></p>
+            </div>
+            <div class="col" style="box-shadow: 0px 0px;">
+                <p style="box-shadow: 0px 0px;"><strong><em>Maximum Total Price: $ {{maxTotalPrice}}</em></strong></p>
+            </div>
+        </div>
+        <div class="row" style="padding: 10px;">
+            <div class="col">
+                <p><strong><em>Maximum Distance: {{location}} km</em></strong></p>
+            </div>
+            <div class="col">
+                <p>
+                    <strong><em>Minimum rating:&nbsp;</em></strong>
+                    <i class="fa fa-star" *ngFor="let rating of ratingArr"></i>
+                </p>
+            </div>
+            <div class="col">
+                <p></p>
+            </div>
+        </div>
+        <div class="text-end" style="padding: 30px 10px 10px 10px;">
+            <button class="btn btn-primary" data-bss-hover-animate="tada" type="button"
+                    [routerLink]="['/advance-filters']"
+                    style="background: #0d6a78;padding: 10px;border-top-color: #0d6a78;">
+                New Search
+            </button>
+        </div>
+    </div>
+</header>
+<section style="background: #cbdde0;padding: 50px 100px;border-right-style: none;">
+    <div>
+        <h2 class="text-start mb-5" style="color: rgb(7,7,7);padding: 10px;">Search Results&nbsp;</h2>
+    </div>
+    <div *ngIf="!searchResults.length">
+        No results found
+    </div>
+    <div *ngIf="searchResults.length">
+        <div class="row" style="border-bottom-style: inset;" *ngFor="let item of searchResults">
+            <div class="col" style="padding: 10px;border-right-style: none;border-bottom-style: none;">
+                <p style="padding: 0px 10px ;">
+                    <a href="#" style="font-size: 22px;" [routerLink]="['/product-detail', item.id]">
+                        <strong>[Title] {{item.itemInformation.itemCondition}} {{item.category}}</strong>
+                    </a>
+                </p>
+                <p style="padding: 0px 10px ;"></p>
+                <p style="padding: 0px 10px ;">
+                    [Description]&nbsp;
+                    <em>"{{item.itemDescription}}"</em>
+                </p>
+                <p style="padding: 0px 10px ;">
+                    [Rating]&nbsp;
+                    <ng-container *ngFor="let fullStar of item.fullStarArr">
+                        <i class="fa fa-star"></i>
+                    </ng-container>
+                    <ng-container *ngIf="item.existHalfStar">
+                        <i class="fa fa-star-half"></i>
+                    </ng-container>
+                </p>
+            </div>
+            <div class="col text-center align-self-center"
+                 style="padding: 10px;border-right-style: none;border-bottom-style: none;"><img
+                src="assets/img/Screen%20Shot%202021-10-10%20at%2011.46.52%20pm.png" width="200px" height="200px"
+                style="padding: 10px;">
+                <p style="font-size: 12px;">[Brand] {{item.itemInformation.brand}}
+                    [Year] {{item.itemInformation.yearPurchased}}</p>
+            </div>
+            <div class="col align-self-center">
+                <div class="text-center"><img src="assets/img/Screen%20Shot%202021-10-28%20at%202.12.18%20am.png"
+                                              style="width: 200px;height: 200px;padding: 10px;">
+                    <p style="font-size: 12px;">Distance: [5km]</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

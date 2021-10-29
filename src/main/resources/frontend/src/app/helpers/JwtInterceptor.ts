@@ -9,10 +9,9 @@ export class JwtInterceptor implements HttpInterceptor {
     }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        let currentUser = this.userService.currentUserValue;
         if (request.url.includes('public')) {
             return next.handle(request);
-        } else if (currentUser.value !== null && Object.keys(currentUser.value).length !== 0) {
+        } else if (localStorage.getItem('user')) {
             request = request.clone({
                 setHeaders: {
                     'Authorization': `Bearer ${JSON.parse(localStorage.getItem('token') || '')}`

@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ToastrService} from "ngx-toastr";
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'app-advance-filters',
@@ -13,40 +14,43 @@ export class AdvanceFiltersComponent implements OnInit {
 
     // rent time
     rentTime: number;
-    rentDaySelected = false;
-    rentWeekSelected = false;
-    rentMonthSelected = false;
+    rentRange: string;
 
     // price
-    maxPrice: number;
-    totalPriceSelected = false;
-    perPriceSelected = false;
+    maxPrice: string;
 
     // location
-    km1LocationSelected = false;
-    km5LocationSelected = false;
-    km10LocationSelected = false;
-    km20LocationSelected = false;
-    noneLocationSelected = false;
+    distanceLocation: string;
 
     // rating
-    rating1Selected = false;
-    rating2Selected = false;
-    rating3Selected = false;
-    rating4Selected = false;
-    rating5Selected = false;
+    rating: string;
 
-    constructor(private readonly _toaster: ToastrService) {
+    constructor(private readonly _toaster: ToastrService,
+                private readonly _router: Router) {
     }
 
     ngOnInit(): void {
     }
 
     onSearched(): void {
-        if (!this.applianceCategory) {
-            this._toaster.error("You should fill in the appliance category!", "Error!")
-        } else {
-            this._toaster.success("Search Successfully!", "Congratulations!")
+        const params: {[key: string]: string} = {};
+        if (this.applianceCategory) {
+            params.applianceCategory = this.applianceCategory;
         }
+        if (this.rentTime && this.rentRange) {
+            params.rent = `${this.rentTime} ${this.rentRange}`;
+        }
+        if (this.maxPrice) {
+            params.maxTotalPrice = this.maxPrice;
+        }
+        if (this.distanceLocation) {
+            params.location = this.distanceLocation;
+        }
+        if (this.rating) {
+            params.rating = this.rating;
+        }
+        this._router.navigate(["/search-result"], {
+            queryParams: params
+        });
     }
 }
