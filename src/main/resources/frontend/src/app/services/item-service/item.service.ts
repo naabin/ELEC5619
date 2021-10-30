@@ -27,7 +27,7 @@ export class ItemService {
     return this.http.get<Item[]>(this.remoteUrl + `/public/items/get-all`, {params: {search: searchQuery}});
   }
 
-  getItemsByLenderId(lenderId: number) {
+  getItemsByLenderId(lenderId?: number) {
     return this.http.get<Item[]>(this.remoteUrl + `/api/item/lender-items/${lenderId}`);
   }
 

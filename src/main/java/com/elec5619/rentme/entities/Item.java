@@ -48,7 +48,6 @@ public class Item {
 //    private final List<RentedItem> rentedItems = new ArrayList<>();
 
     @OneToMany
-    @JoinColumn
     private final List<Image> images = new ArrayList<>();
 
 

@@ -79,9 +79,9 @@ public class ItemController {
         LOGGER.info("Original file size in bytes: " + file.getBytes().length);
         image.setImageBytes(file.getBytes());
         Image uploadedImage = this.imageService.save(image);
-//        item.addImage(uploadedImage);
-//        Item updatedItem = this.itemService.update(item);
-        return ResponseEntity.ok().body(uploadedImage);
+        item.addImage(uploadedImage);
+        Item updatedItem = this.itemService.update(item);
+        return ResponseEntity.ok().body(updatedItem);
     }
 
     @GetMapping("/get-items-nearby/{userId}")

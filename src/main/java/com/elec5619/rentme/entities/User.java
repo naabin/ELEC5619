@@ -41,7 +41,7 @@ public class User implements UserDetails {
     @Column
     private String phone;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER)
     private Address address;
 
     @Column(unique = true)

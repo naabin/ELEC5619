@@ -3,7 +3,7 @@ import { Address } from './Address';
 import { Payment } from './Payment';
 import { UserRole } from './UserRole';
 export class User {
-  id?: string;
+  id?: number;
   name?: string;
   email?: string;
   password?: string;

@@ -82,4 +82,8 @@ export class UserService {
   usernameExists(username: string) {
     return this.http.post<{available: boolean}>(`${this.remoteUrl}/api/user/unique-user`, {}, {params: {username}});
   }
+
+  getUserById(id?: number): Observable<User> {
+      return this.http.get<User>(`/api/user/${id}`);
+  }
 }

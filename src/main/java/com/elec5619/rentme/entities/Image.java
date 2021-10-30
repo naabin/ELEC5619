@@ -1,10 +1,11 @@
 package com.elec5619.rentme.entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "image")
-public class Image {
+public class Image  implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -19,7 +20,7 @@ public class Image {
     private byte[] imageBytes;
 
     @ManyToOne
-    @JoinColumn(name = "item_id", referencedColumnName = "id")
+//    @JoinColumn(name = "item_id", referencedColumnName = "id")
     private Item imageItem;
 
 
