@@ -23,6 +23,7 @@ import {AdvanceFiltersComponent} from './advance-filters/advance-filters.compone
 import {JwtInterceptor} from "./helpers/JwtInterceptor";
 import {AngularFileUploaderModule} from "angular-file-uploader";
 import { MapComponent } from './map/map.component';
+import { StripeGatewayComponent } from './stripe-gateway/stripe-gateway.component';
 import { SearchResultComponent } from './search-result/search-result.component';
 
 @NgModule({
@@ -37,6 +38,8 @@ import { SearchResultComponent } from './search-result/search-result.component';
         CreateListingComponent,
         ProductDetailComponent,
         AdvanceFiltersComponent,
+        MapComponent,
+        StripeGatewayComponent
         MapComponent,
         SearchResultComponent
     ],
