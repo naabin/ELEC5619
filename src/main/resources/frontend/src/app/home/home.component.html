@@ -1,4 +1,4 @@
- <header class="text-center text-white masthead"
+<header class="text-center text-white masthead"
         style="background: url('/assets/img/home/header_bg.png');background-size: cover;padding-top: 12rem; padding-bottom: 12rem;position: relative;">
     <div class="d-lg-flex align-items-lg-start overlay-cover" style="opacity: 0.60;"></div>
     <div class="container">
@@ -7,22 +7,24 @@
                 <h1 class="mb-5">Share household appliances with <br>your neighbours!</h1>
             </div>
             <div class="col-md-10 col-lg-8 col-xl-7 mx-auto position-relative">
-                <form>
-                    <div class="row">
-                        <div class="col-12 col-md-9 text-end mb-2 mb-md-0"><input class="form-control" type="text"
-                                                                                  placeholder="Search an appliance..."
-                                                                                  style="margin: 10px;">
-                            <a [routerLink]="['/advance-filters']"
-                               class="text-start bounce animated" href="#" style="color: #dee2e6;">Advanced
-                                Search</a></div>
-                        <div class="col-12 col-md-3">
-                            <button class="btn btn-primary btn-lg" data-bss-hover-animate="tada" type="submit"
-                                    style="background: #009ea0;border-color: #009ea0;border-top-color: rgb(255,;border-right-color: 255,;border-bottom-color: 255);border-left-color: 255,;margin: 5px;">
-                                Search
-                            </button>
-                        </div>
+                <div class="row">
+                    <div class="col-12 col-md-9 text-end mb-2 mb-md-0">
+                        <input class="form-control" type="text"
+                               [(ngModel)]="searchedItemName"
+                               placeholder="Search an appliance..." style="margin: 10px;">
+                        <a [routerLink]="['/advance-filters']"
+                           class="text-start bounce animated" href="#" style="color: #dee2e6;">
+                            Advanced Search
+                        </a>
                     </div>
-                </form>
+                    <div class="col-12 col-md-3">
+                        <button class="btn btn-primary btn-lg" data-bss-hover-animate="tada" type="submit"
+                                (click)="applySearch()"
+                                style="background: #009ea0;border-color: #009ea0;border-top-color: rgb(255,;border-right-color: 255,;border-bottom-color: 255);border-left-color: 255,;margin: 5px;">
+                            Search
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -60,7 +62,8 @@
                            value="${{item.ratePerDay!}} per day || ${{item.ratePerWeek!}} per week" readonly=""
                            style="font-size: 12px;text-align: center;"></div>
                 <div style="text-align: center;">
-                    <button class="btn btn-primary" data-bss-hover-animate="tada" type="button" (click)="navigateToDetail(1)"
+                    <button class="btn btn-primary" data-bss-hover-animate="tada" type="button"
+                            (click)="navigateToDetail(1)"
                             style="width: 50px;height: 30px;font-size: 11px;background: #17a2b8;border-color: #17a2b8;text-align: center;">
                         View
                     </button>
@@ -78,7 +81,7 @@
                  style="background: url('/assets/img/home/involved1.jpeg');padding: 10px;opacity: 0.81;height: 400px;filter: brightness(94%) contrast(101%) grayscale(0%) hue-rotate(0deg) invert(0%) sepia(0%);">
                 <div class="col align-self-end" style="opacity: 1;">
                     <h1 class="bg-white border rounded-0"
-                        style="background: #00000000;filter: saturate(74%);font-weight: bold;">Become a Lender</h1>
+                        style="background: #00000000;filter: saturate(74%);font-weight: bold;" (click)="execNav()">Become a Lender</h1>
                     <p class="bg-white border rounded-0" style="font-weight: bold;">Earn extra income from items you
                         already own</p>
                 </div>
@@ -88,7 +91,7 @@
                  style="background: url('/assets/img/home/involved2.jpeg');padding: 40px;opacity: 0.81;height: 400px;filter: brightness(94%) contrast(101%) grayscale(0%) hue-rotate(0deg) invert(0%) sepia(0%);">
                 <div class="col align-self-end" style="opacity: 1;">
                     <h1 class="bg-white border rounded-0"
-                        style="background: #00000000;filter: saturate(74%);font-weight: bold;">Become a Renter</h1>
+                        style="background: #00000000;filter: saturate(74%);font-weight: bold;" (click)="execNav()">Become a Renter</h1>
                     <p class="bg-white border rounded-0" style="font-weight: bold;">Find an affordable, short-term
                         appliance rental near you.&nbsp;</p>
                 </div>

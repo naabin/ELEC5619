@@ -5,6 +5,7 @@ import {HomeComponent} from './home/home.component';
 import {MyProfileComponent} from './my-profile/my-profile.component';
 import {ProductDetailComponent} from "./product-detail/product-detail.component";
 import {AdvanceFiltersComponent} from "./advance-filters/advance-filters.component";
+import {SearchResultComponent} from "./search-result/search-result.component";
 
 const routes: Routes = [
     {
@@ -26,6 +27,10 @@ const routes: Routes = [
     {
         path: 'advance-filters',
         component: AdvanceFiltersComponent
+    },
+    {
+        path: 'search-result',
+        component: SearchResultComponent
     }
 ];
 

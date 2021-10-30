@@ -12,6 +12,7 @@ export class UserService {
 
   public currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
+  public currentUserAsync: User;
   private remoteUrl = url;
 
   private httpOptions = {
@@ -23,7 +24,6 @@ export class UserService {
   constructor(private http:HttpClient) {
     this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem("token") || '{}'));
     this.currentUser = this.currentUserSubject.asObservable();
-
   }
 
   sendToken(email: string){
@@ -48,7 +48,7 @@ export class UserService {
       JSON.stringify({username, password}), this.httpOptions)
       .pipe(
         tap(user => {
-          this.currentUserSubject.next(user)
+          this.currentUserSubject.next(user);
           localStorage.setItem('token', JSON.stringify(user.token));
           localStorage.setItem('userId', JSON.stringify(user.id));
         })

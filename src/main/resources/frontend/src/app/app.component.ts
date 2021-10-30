@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {UserHttpService} from "./http/user.http.service";
 
 @Component({
   selector: 'app-root',
@@ -11,10 +10,7 @@ export class AppComponent implements OnInit{
 
   applicationName = 'DifficultShare';
 
-  constructor(private readonly _userHttpService: UserHttpService) {
-      this._userHttpService.fetchUserById(2).subscribe((res) => {
-          console.log(res);
-      });
+  constructor() {
   }
 
   ngOnInit(): void {

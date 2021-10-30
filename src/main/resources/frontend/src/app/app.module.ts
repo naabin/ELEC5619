@@ -24,6 +24,7 @@ import {JwtInterceptor} from "./helpers/JwtInterceptor";
 import {AngularFileUploaderModule} from "angular-file-uploader";
 import { MapComponent } from './map/map.component';
 import { StripeGatewayComponent } from './stripe-gateway/stripe-gateway.component';
+import { SearchResultComponent } from './search-result/search-result.component';
 
 @NgModule({
     declarations: [
@@ -39,6 +40,8 @@ import { StripeGatewayComponent } from './stripe-gateway/stripe-gateway.componen
         AdvanceFiltersComponent,
         MapComponent,
         StripeGatewayComponent
+        MapComponent,
+        SearchResultComponent
     ],
     imports: [
         ModalModule.forRoot(),
