@@ -102,5 +102,30 @@ This tool can be accessed through the navigation bar. The user will be directed 
 
 The My Profile page, accessible from the navigation bar, is split into two sections. On the left hand side, the user is able to add, or edit their personal and payment details. On the right hand side, they will be able to view all their rental appliances.    
 
+## References and Resources
+
+https://www.digitalocean.com/community/tutorials/angular-angular-and-leaflet
+
+https://medium.com/runic-software/the-simple-guide-to-angular-leaflet-maps-41de83db45f1
+
+https://blog.mestwin.net/use-leaflet-in-your-angular-8-project-for-interactive-maps/
+
+https://edupala.com/how-to-add-angular-leaflet-map/
+
+https://gocardless.com/en-au/guides/posts/payment-gateways/#:~:text=A%20payment%20gateway%20is%20a,for%20you%20to%20get%20paid.&text=It%20lets%20your%20customer%20submit,the%20merchant%20and%20the%20bank.
+
+https://leafletjs.com/index.html
+
+https://sendgrid.com/solutions/email-api/
+
+https://betterprogramming.pub/payments-simplified-stripe-angular-express-4a88bf69f82e
+
+https://medium.com/bitontree/integrate-stripe-with-angular-10-e9e86874d889
+
+https://saikiran1298.medium.com/integrating-stripe-payments-into-angular-and-nodejs-applications-10f40dcc21f5
+
+https://morioh.com/p/54997c340722
+
+https://leafletjs.com/examples/quick-start/
 
 
