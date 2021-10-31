@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/public")
+@RequestMapping("/api/public")
 public class PublicController {
 
     private ItemService itemService;
@@ -26,5 +26,14 @@ public class PublicController {
     public ResponseEntity<?> getAllItemsByName(@RequestParam(name = "search") String searchQuery) {
         List<Item> searchedResults = this.itemService.getAllItemByName(searchQuery);
         return ResponseEntity.ok().body(searchedResults);
+    }
+
+    @GetMapping("/items/advance-search")
+//    String category, Integer maxPrice, int minimumRating
+    public ResponseEntity<?> advanceSearch(@RequestParam("category") String category,
+                                           @RequestParam("maxPrice") Double maxPrice,
+                                           @RequestParam("minimumRating")Integer minimumRating) {
+        List<Item> items =  this.itemService.getAdvancedSearch(category, maxPrice, minimumRating);
+        return ResponseEntity.ok().body(items);
     }
 }

@@ -6,6 +6,7 @@ import {MyProfileComponent} from './my-profile/my-profile.component';
 import {ProductDetailComponent} from "./product-detail/product-detail.component";
 import {AdvanceFiltersComponent} from "./advance-filters/advance-filters.component";
 import {SearchResultComponent} from "./search-result/search-result.component";
+import { StripeGatewayComponent } from './stripe-gateway/stripe-gateway.component';
 
 const routes: Routes = [
     {
@@ -31,6 +32,10 @@ const routes: Routes = [
     {
         path: 'search-result',
         component: SearchResultComponent
+    },
+    {
+        path: 'payment/:id',
+        component: StripeGatewayComponent
     }
 ];
 

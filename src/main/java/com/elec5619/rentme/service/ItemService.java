@@ -49,6 +49,10 @@ public class ItemService  implements GeneralService<Item> {
         return this.itemRepository.saveAndFlush(item);
     }
 
+    public List<Item> getAdvancedSearch(String category, Double maxPrice, int minimumRating) {
+        return this.itemRepository.searchItems(category, maxPrice, minimumRating);
+    }
+
     @Override
     public void delete(Long id) {
         this.itemRepository.deleteById(id);

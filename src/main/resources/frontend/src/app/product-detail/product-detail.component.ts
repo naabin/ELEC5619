@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductHttpService} from "../http/product.http.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {ProductDetail} from "../entities/ProductDetail";
 import {ToastrService} from "ngx-toastr";
 import {ItemHttpService} from "../http/item.http.service";
@@ -26,6 +26,7 @@ export class ProductDetailComponent implements OnInit {
 
     constructor(private readonly _itemHttpService: ItemHttpService,
                 private readonly _activatedRoute: ActivatedRoute,
+                private router: Router,
                 private readonly _toaster: ToastrService) {
     }
 
@@ -38,9 +39,9 @@ export class ProductDetailComponent implements OnInit {
 
     }
 
-    payment() {
+    payment(itemId: number|undefined) {
         if (this.total) {
-            this._toaster.success("Pay Successfully!");
+            this.router.navigate(['/payment', itemId]);
         } else {
             this._toaster.error("Please select your rent for!");
         }

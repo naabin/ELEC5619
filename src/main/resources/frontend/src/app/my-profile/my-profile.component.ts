@@ -58,4 +58,8 @@ export class MyProfileComponent implements OnInit {
         this.items = items;
     })
   }
+
+  getImage(item: Item): string | null {
+      return item.images && item.images.length > 0 ? item.images[0].imageUrl : null;
+  }
 }

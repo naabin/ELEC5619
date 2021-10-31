@@ -71,7 +71,7 @@ public class UserSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .antMatchers("/api/user/**")
                 .permitAll()
-                .antMatchers("/public/**")
+                .antMatchers("/api/public/**")
                 .permitAll()
                 .antMatchers(HttpMethod.OPTIONS, "/**")
                 .permitAll()

@@ -29,6 +29,9 @@ public class Item {
     private ItemInformation itemInformation;
 
     @Column
+    private int rating = 5;
+
+    @Column
     private String itemDescription;
 
     @Column
@@ -40,12 +43,6 @@ public class Item {
     @Column
     @NotNull
     private Double itemPrice;
-
-//    @OneToMany(mappedBy = "complainedItem", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//    private final List<Complaint> complaints = new ArrayList<>();
-
-//    @OneToMany(mappedBy = "rentedItem", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//    private final List<RentedItem> rentedItems = new ArrayList<>();
 
     @OneToMany
     private final List<Image> images = new ArrayList<>();
@@ -137,5 +134,13 @@ public class Item {
 
     public List<Image> getImages() {
         return images;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
     }
 }

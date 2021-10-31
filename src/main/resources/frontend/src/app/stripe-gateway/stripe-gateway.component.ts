@@ -1,4 +1,6 @@
 import { Component} from '@angular/core';
+import { User } from '../entities/User';
+import { ItemService } from '../services/item-service/item.service';
 
 @Component({
   selector: 'app-stripe-gateway',
@@ -7,8 +9,8 @@ import { Component} from '@angular/core';
 })
 export class StripeGatewayComponent {
     paymentHandler: any = null;
-
-    constructor() {
+    token: any;
+    constructor(private itemService: ItemService) {
     }
 
     ngOnInit() {
@@ -19,8 +21,9 @@ export class StripeGatewayComponent {
         const paymentHandler = (<any>window).StripeCheckout.configure({
             key: 'pk_test_51Jof6GJs7OZkYFOstRVxICqKaQ1Na5ujc5BlgP3RkrPcwERYAdjSOX1wR9Vbk83ZDlHnNqfuoRu1th9wAuc3ocJe00Ed3WdPXK',
             locale: 'auto',
-            token: function (stripeToken: any) {
-                console.log(stripeToken)
+            token: (stripeToken: any) => {
+                console.log("token: " + stripeToken);
+                this.processPayment(stripeToken);
                 alert('Stripe token generated!');
             }
         });
@@ -43,7 +46,7 @@ export class StripeGatewayComponent {
                     key: 'pk_test_51Jof6GJs7OZkYFOstRVxICqKaQ1Na5ujc5BlgP3RkrPcwERYAdjSOX1wR9Vbk83ZDlHnNqfuoRu1th9wAuc3ocJe00Ed3WdPXK',
                     locale: 'auto',
                     token: function (stripeToken: any) {
-                        console.log(stripeToken)
+
                         alert('Payment has been successfull!');
                     }
                 });
@@ -51,6 +54,13 @@ export class StripeGatewayComponent {
 
             window.document.body.appendChild(script);
         }
+    }
+
+    processPayment(token: any) {
+        const user = JSON.parse(localStorage.getItem('user') || '') as User;
+        this.itemService.processPayment(token.id, 10).subscribe(data => {
+            console.log(data);
+        })
     }
 }
 

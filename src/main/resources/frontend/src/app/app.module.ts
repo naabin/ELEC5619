@@ -39,8 +39,7 @@ import { SearchResultComponent } from './search-result/search-result.component';
         ProductDetailComponent,
         AdvanceFiltersComponent,
         MapComponent,
-        StripeGatewayComponent
-        MapComponent,
+        StripeGatewayComponent,
         SearchResultComponent
     ],
     imports: [

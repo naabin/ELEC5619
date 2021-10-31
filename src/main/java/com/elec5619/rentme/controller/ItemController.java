@@ -4,6 +4,7 @@ import com.elec5619.rentme.controller.exceptions.ResourceNotFoundException;
 import com.elec5619.rentme.entities.Image;
 import com.elec5619.rentme.entities.Item;
 import com.elec5619.rentme.entities.User;
+import com.elec5619.rentme.service.AmazonClient;
 import com.elec5619.rentme.service.ImageService;
 import com.elec5619.rentme.service.ItemService;
 import com.elec5619.rentme.service.UserService;
@@ -26,12 +27,14 @@ public class ItemController {
     private final ItemService itemService;
     private final UserService<User> userService;
     private final ImageService imageService;
+    private final AmazonClient amazonClient;
 
     @Autowired
-    public ItemController(ItemService itemService, UserService<User> userService, ImageService imageService) {
+    public ItemController(ItemService itemService, UserService<User> userService, ImageService imageService, AmazonClient amazonClient) {
         this.itemService = itemService;
         this.userService = userService;
         this.imageService = imageService;
+        this.amazonClient = amazonClient;
     }
 
     @PostMapping("create/{user-id}")
@@ -43,9 +46,8 @@ public class ItemController {
     }
 
     @PostMapping("update/{user-id}")
-    public ResponseEntity<?> updateItem(@Valid @RequestBody Item item, @PathVariable("user-id")Long lenderId) {
-        User user = this.userService.findUserById(lenderId).orElseThrow(() -> new UsernameNotFoundException("User does not exist"));
-        item.setLender(user);
+    public ResponseEntity<?> updateItem(@Valid @RequestBody Item item, @PathVariable("user-id")Long lenderId) throws ResourceNotFoundException {
+        this.userService.findUserById(lenderId).orElseThrow(() -> new UsernameNotFoundException("User does not exist"));
         Item updatedItem = this.itemService.update(item);
         return ResponseEntity.ok().body(updatedItem);
     }
@@ -77,7 +79,8 @@ public class ItemController {
         image.setName(file.getOriginalFilename());
         image.setType(file.getContentType());
         LOGGER.info("Original file size in bytes: " + file.getBytes().length);
-        image.setImageBytes(file.getBytes());
+        String imageUrl = this.amazonClient.uploadFile(file);
+        image.setImageUrl(imageUrl);
         Image uploadedImage = this.imageService.save(image);
         item.addImage(uploadedImage);
         Item updatedItem = this.itemService.update(item);

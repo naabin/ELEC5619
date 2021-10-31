@@ -37,7 +37,7 @@ public class UserController {
         return ResponseEntity.ok().body(newUser);
     }
 
-    @PostMapping()
+    @PostMapping
     public ResponseEntity<?> userRegistration(@Valid @RequestBody User user) {
         User newUser = createUser(user, "ROLE_USER");
         return ResponseEntity.ok().body(newUser);
@@ -58,7 +58,7 @@ public class UserController {
         User newUser = this.userService.createUser(user, roles);
         this.emailService.sendHtml("nkar7555@uni.sydney.edu.au", user.getEmail(),
                 "Registration",
-                "Welcom to Easy Share. Start sharing your things today", "http://localhost:4200");
+                "Welcome to Easy Share. Start sharing your things today", "http://localhost:4200/my-profile");
         return newUser;
     }
 

@@ -3,6 +3,7 @@ import {ActivatedRoute} from "@angular/router";
 import {ItemHttpService} from "../http/item.http.service";
 import {Item} from "../entities/Item";
 import {CalculateUtil} from "../core/calculate.util";
+import { ItemService } from '../services/item-service/item.service';
 
 @Component({
     selector: 'app-search-result',
@@ -25,11 +26,16 @@ export class SearchResultComponent implements OnInit {
     defaultFilterResult = 'N/A';
 
     constructor(private readonly _activatedRoute: ActivatedRoute,
+                private itemService: ItemService,
                 private readonly _itemHttpService: ItemHttpService) {
     }
 
     ngOnInit(): void {
         this._activatedRoute.queryParams.subscribe((queryParams) => {
+            const {applianceCategory, maxTotalPrice, rating} = queryParams;
+            this.itemService.advancedSearch(applianceCategory, maxTotalPrice, rating).subscribe(data => {
+                this.searchResults = data;
+            })
             this.applianceName = queryParams.applianceName;
             this.applianceCategory = queryParams.applianceCategory ?? this.defaultFilterResult;
             this.rent = queryParams.rent ?? this.defaultFilterResult;

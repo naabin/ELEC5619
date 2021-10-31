@@ -143,7 +143,7 @@
         <h3 class="text-start" style="padding: 30px;">My Appliances</h3>
         <div style="padding: 20px;text-align: center;height: 400px;" *ngFor="let item of items">
           <h5 class="text-center">{{ item.itemName }}</h5><img class="img-thumbnail"
-            style="width: 200px;height: 200px;padding: 10px;border-style: solid;" [src]="'data:image/png'">
+            style="width: 200px;height: 200px;padding: 10px;border-style: solid;" [src]="getImage(item) !== null ? getImage(item) : '../assets/img/placeholder-image.jpg'">
           <div style="padding: 10px;"><button class="btn btn-primary" data-bss-hover-animate="tada" type="button"
               style="text-align: right;background: var(--bs-cyan);border-color: var(--bs-cyan);">View</button></div>
         </div>

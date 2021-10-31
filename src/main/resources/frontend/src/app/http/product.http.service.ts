@@ -58,6 +58,7 @@ export class ProductHttpService {
     fetchProductDetailById(id: number): Observable<ProductDetail> {
         // mocked return details
         return of({
+            id: 1,
             itemName: 'Excellent BBQ - Perfect for large gatherings',
             rateNum: 4.5,
             reviewNum: 15,

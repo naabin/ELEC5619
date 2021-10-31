@@ -25,12 +25,7 @@ public class EmailService {
     }
 
     public void sendHtml(String from, String to, String subject, String body, String link) {
-        Context context = new Context();
-        context.setVariable("subject", subject);
-        context.setVariable("message", body);
-        context.setVariable("link", link);
-        String processEngine = this.templateEngine.process("email-template", context);
-        Response response =  sendEmail(from, to, subject, new Content("text/html", processEngine));
+        Response response =  sendEmail(from, to, subject, new Content("text/html", body));
         LOGGER.info("Status code: " + response.getStatusCode() + "\nHeaders: " + response.getHeaders());
 
     }

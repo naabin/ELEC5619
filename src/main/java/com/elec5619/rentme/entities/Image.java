@@ -1,5 +1,7 @@
 package com.elec5619.rentme.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -16,11 +18,11 @@ public class Image  implements Serializable {
     @Column
     private String type;
 
-    @Column(columnDefinition = "MEDIUMBLOB")
-    private byte[] imageBytes;
+    @Column
+    private String imageUrl;
 
     @ManyToOne
-//    @JoinColumn(name = "item_id", referencedColumnName = "id")
+    @JsonIgnore
     private Item imageItem;
 
 
@@ -48,12 +50,12 @@ public class Image  implements Serializable {
         this.type = type;
     }
 
-    public byte[] getImageBytes() {
-        return imageBytes;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public void setImageBytes(byte[] imageBytes) {
-        this.imageBytes = imageBytes;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public Item getImageItem() {

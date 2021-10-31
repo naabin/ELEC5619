@@ -38,4 +38,18 @@ export class ItemService {
       }
       throw Error();
   }
+
+  processPayment(chargeRequest: any, itemId?: number) {
+      return this.http.post(`/api/payment/process/${itemId}`, JSON.stringify(chargeRequest), this.httpOptions);
+  }
+
+  getAllItems(): Observable<Item[]> {
+      return this.http.get<Item[]>(`api/public/items/get-all`, {params: {search: ''}});
+  }
+
+  advancedSearch(category: string, maxPrice: number, minimumRating: number): Observable<Item[]> {
+      return this.http.get<Item[]>(`/api/public/items/advance-search`, {params: {
+          category, maxPrice, minimumRating: minimumRating ? minimumRating : 0
+      }});
+  }
 }

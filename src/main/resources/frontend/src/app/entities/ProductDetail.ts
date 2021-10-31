@@ -2,6 +2,7 @@ import {Complaint} from "./Complaint";
 import {User} from "./User";
 
 export class ProductDetail {
+    id?: number;
     itemName?: string;
     rateNum?: number;
     reviewNum?: number;

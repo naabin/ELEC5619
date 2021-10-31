@@ -36,7 +36,12 @@ export class UserService {
   }
 
   registerUser(user: User): Observable<any> {
-    return this.http.post<User>('/api/user', JSON.stringify(user), this.httpOptions);
+    return this.http.post<User>('/api/user', JSON.stringify(user), this.httpOptions).pipe(
+        tap(user => {
+            this.currentUserSubject.next(user);
+            localStorage.setItem('token', JSON.stringify(user.token));
+        })
+    );
   }
 
   registerRenter(user: User): Observable<any> {
@@ -83,7 +88,7 @@ export class UserService {
     return this.http.post<{available: boolean}>(`${this.remoteUrl}/api/user/unique-user`, {}, {params: {username}});
   }
 
-  getUserById(id?: number): Observable<User> {
+  getUserById(id?   : number): Observable<User> {
       return this.http.get<User>(`/api/user/${id}`);
   }
 }
