@@ -24,7 +24,7 @@ export class ItemService {
   }
 
   getAllBySearchQuery(searchQuery: string): Observable<Item[]> {
-    return this.http.get<Item[]>(this.remoteUrl + `/public/items/get-all`, {params: {search: searchQuery}});
+    return this.http.get<Item[]>(`/api/public/items/get-all`, {params: {search: searchQuery}});
   }
 
   getItemsByLenderId(lenderId?: number) {

@@ -29,7 +29,6 @@ public class PublicController {
     }
 
     @GetMapping("/items/advance-search")
-//    String category, Integer maxPrice, int minimumRating
     public ResponseEntity<?> advanceSearch(@RequestParam("category") String category,
                                            @RequestParam("maxPrice") Double maxPrice,
                                            @RequestParam("minimumRating")Integer minimumRating) {

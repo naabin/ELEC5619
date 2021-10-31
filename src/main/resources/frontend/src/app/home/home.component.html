@@ -8,15 +8,15 @@
             </div>
             <div class="col-md-10 col-lg-8 col-xl-7 mx-auto position-relative">
                 <div class="row">
-                    <div class="col-12 col-md-9 text-end mb-2 mb-md-0">
+                    <form [formGroup]="searchForm" class="col-12 col-md-9 text-end mb-2 mb-md-0">
                         <input class="form-control" type="text"
-                               [(ngModel)]="searchedItemName"
+                               formControlName="search" (keypress)="searchItems($event.target?.value)"
                                placeholder="Search an appliance..." style="margin: 10px;">
                         <a [routerLink]="['/advance-filters']"
                            class="text-start bounce animated" href="#" style="color: #dee2e6;">
                             Advanced Search
                         </a>
-                    </div>
+                    </form>
                     <div class="col-12 col-md-3">
                         <button class="btn btn-primary btn-lg" data-bss-hover-animate="tada" type="submit"
                                 (click)="applySearch()"
@@ -24,78 +24,106 @@
                             Search
                         </button>
                     </div>
+                    <!-- <div [ngClass]="searching ? 'visible' : 'hidden'" class="results transition">
+                        <div *ngIf="searchedItems && searchedItems.length > 0; else notFound">
+                          <div class="ui list" *ngFor="let item of searchedItems">
+                            <div class="item">
+                              <i class="map marker icon"></i>
+                              <div class="content">
+                                <a [routerLink]="['/product-detail', item.id]" class="header">{{item.itemName}}</a>
+                                <div class="description">{{item.itemDescription}}</div>
+                              </div>
+                            </div>
+                          </div>
+                        </div> -->
+                        <mat-autocomplete #auto="matAutocomplete">
+                            <mat-option *ngFor="let option of searchedItems" [value]="option">
+                                <a *ngIf="item !== null" [routerLink]="['/product-detail', item?.id]" class="header">{{item.itemName}}</a>
+                            </mat-option>
+                          </mat-autocomplete>
+                        <ng-template #notFound>
+                            <a href="#" class="result">Did not find any matching item</a>
+                        </ng-template>
+                      </div>
                 </div>
             </div>
         </div>
-    </div>
 </header>
-<section style="padding: 100px;background: #dce7e8;">
-    <div>
-        <h2 class="text-start mb-5" style="color: rgb(7,7,7);padding: 10px;">
-            <i class="fas fa-map-marker-alt" style="padding: 10px;color: rgb(17,18,18);"></i>&nbsp;&nbsp; Explore Nearby
-        </h2>
-    </div>
-    <div>
-        <div class="row">
-            <div class="col-lg-3" style="padding: 20px;background: transparent;text-align: center;"
-                 *ngFor="let item of products">
-                <img
-                    class="img-fluid border-info shadow-lg mb-3"
-                    [src]="getImage(item)"
-                    style="filter: hue-rotate(0deg) sepia(0%);height: 214.25px;width: 214.25px;">
-                <h5 style="height: 48px;">{{item.brand!}} {{item.category}}<br><br></h5>
-                <p class="font-weight-light mb-0" style="font-size: 12px; height: 50px;"><em>"{{item.itemDescription!}}
-                    "</em><br></p>
-                <div style="text-align: center;">
-                    <ng-container *ngFor="let fullStar of item.fullStarArr">
-                        <i class="fa fa-star"></i>
-                    </ng-container>
-                    <ng-container *ngIf="item.halfStar === 1">
-                        <i class="fa fa-star-half"></i>
-                    </ng-container>
+<mat-tab-group mat-align-tabs="start">
+    <mat-tab label="Explore Items">
+        <section style="padding: 100px;background: #dce7e8;">
+            <div>
+                <h2 class="text-start mb-5" style="color: rgb(7,7,7);padding: 10px;">
+                    <i class="fas fa-map-marker-alt" style="padding: 10px;color: rgb(17,18,18);"></i>&nbsp;&nbsp; Explore Nearby
+                </h2>
+            </div>
+            <div>
+                <div class="row">
+                    <div class="col-lg-3" style="padding: 20px;background: transparent;text-align: center;"
+                         *ngFor="let item of products">
+                        <img
+                            class="img-fluid border-info shadow-lg mb-3"
+                            [src]="getImage(item)"
+                            style="filter: hue-rotate(0deg) sepia(0%);height: 214.25px;width: 214.25px;">
+                        <h5 style="height: 48px;">{{item.brand!}} {{item.category}}<br><br></h5>
+                        <p class="font-weight-light mb-0" style="font-size: 12px; height: 50px;"><em>"{{item.itemDescription!}}
+                            "</em><br></p>
+                        <div style="text-align: center;">
+                            <ng-container *ngFor="let fullStar of item.fullStarArr">
+                                <i class="fa fa-star"></i>
+                            </ng-container>
+                            <ng-container *ngIf="item.halfStar === 1">
+                                <i class="fa fa-star-half"></i>
+                            </ng-container>
 
-                </div>
-                <div style="text-align: center;">
-                    <a href="#" style="font-size: 10px;height: 0px;width: 0px;">{{item.reviewNum!}} reviews</a></div>
-                <div style="border-style: none;">
-                    <input class="form-control-plaintext" type="text"
-                           value="${{item.ratePerDay!}} per day || ${{item.ratePerWeek!}} per week" readonly=""
-                           style="font-size: 12px;text-align: center;"></div>
-                <div style="text-align: center;">
-                    <button class="btn btn-primary" data-bss-hover-animate="tada" type="button"
-                            (click)="navigateToDetail(item?.id)"
-                            style="width: 50px;height: 30px;font-size: 11px;background: #17a2b8;border-color: #17a2b8;text-align: center;">
-                        View
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<section class="text-end showcase" style="background: #dce7e8;text-align: center;">
-    <h2 class="text-start mb-5" style="color: rgb(7,7,7);margin: 0px 100px;">
-        <i class="fas fa-user-friends" style="padding: 10px;color: rgb(17,18,18);"></i>Be Involved</h2>
-    <div class="container-fluid p-0" style="padding: 100px;text-align: center;">
-        <div style="margin: 0px 300px;">
-            <div class="row text-center"
-                 style="background: url('/assets/img/home/involved1.jpeg');padding: 10px;opacity: 0.81;height: 400px;filter: brightness(94%) contrast(101%) grayscale(0%) hue-rotate(0deg) invert(0%) sepia(0%);">
-                <div class="col align-self-end" style="opacity: 1;">
-                    <h1 class="bg-white border rounded-0"
-                        style="background: #00000000;filter: saturate(74%);font-weight: bold;" (click)="execNav()">Become a Lender</h1>
-                    <p class="bg-white border rounded-0" style="font-weight: bold;">Earn extra income from items you
-                        already own</p>
+                        </div>
+                        <div style="text-align: center;">
+                            <a href="#" style="font-size: 10px;height: 0px;width: 0px;">{{item.reviewNum!}} reviews</a></div>
+                        <div style="border-style: none;">
+                            <input class="form-control-plaintext" type="text"
+                                   value="${{item.ratePerDay!}} per day || ${{item.ratePerWeek!}} per week" readonly=""
+                                   style="font-size: 12px;text-align: center;"></div>
+                        <div style="text-align: center;">
+                            <button class="btn btn-primary" data-bss-hover-animate="tada" type="button"
+                                    (click)="navigateToDetail(item?.id)"
+                                    style="width: 50px;height: 30px;font-size: 11px;background: #17a2b8;border-color: #17a2b8;text-align: center;">
+                                View
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="row" style="height: 30px;background: #dce7e8;"></div>
-            <div class="row text-center"
-                 style="background: url('/assets/img/home/involved2.jpeg');padding: 40px;opacity: 0.81;height: 400px;filter: brightness(94%) contrast(101%) grayscale(0%) hue-rotate(0deg) invert(0%) sepia(0%);">
-                <div class="col align-self-end" style="opacity: 1;">
-                    <h1 class="bg-white border rounded-0"
-                        style="background: #00000000;filter: saturate(74%);font-weight: bold;" (click)="execNav()">Become a Renter</h1>
-                    <p class="bg-white border rounded-0" style="font-weight: bold;">Find an affordable, short-term
-                        appliance rental near you.&nbsp;</p>
+        </section>
+        <section class="text-end showcase" style="background: #dce7e8;text-align: center;">
+            <h2 class="text-start mb-5" style="color: rgb(7,7,7);margin: 0px 100px;">
+                <i class="fas fa-user-friends" style="padding: 10px;color: rgb(17,18,18);"></i>Be Involved</h2>
+            <div class="container-fluid p-0" style="padding: 100px;text-align: center;">
+                <div style="margin: 0px 300px;">
+                    <div class="row text-center"
+                         style="background: url('/assets/img/home/involved1.jpeg');padding: 10px;opacity: 0.81;height: 400px;filter: brightness(94%) contrast(101%) grayscale(0%) hue-rotate(0deg) invert(0%) sepia(0%);">
+                        <div class="col align-self-end" style="opacity: 1;">
+                            <h1 class="bg-white border rounded-0"
+                                style="background: #00000000;filter: saturate(74%);font-weight: bold;" (click)="execNav()">Become a Lender</h1>
+                            <p class="bg-white border rounded-0" style="font-weight: bold;">Earn extra income from items you
+                                already own</p>
+                        </div>
+                    </div>
+                    <div class="row" style="height: 30px;background: #dce7e8;"></div>
+                    <div class="row text-center"
+                         style="background: url('/assets/img/home/involved2.jpeg');padding: 40px;opacity: 0.81;height: 400px;filter: brightness(94%) contrast(101%) grayscale(0%) hue-rotate(0deg) invert(0%) sepia(0%);">
+                        <div class="col align-self-end" style="opacity: 1;">
+                            <h1 class="bg-white border rounded-0"
+                                style="background: #00000000;filter: saturate(74%);font-weight: bold;" (click)="execNav()">Become a Renter</h1>
+                            <p class="bg-white border rounded-0" style="font-weight: bold;">Find an affordable, short-term
+                                appliance rental near you.&nbsp;</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
+        </section>
+    </mat-tab>
+    <mat-tab label="Explore Near By">
+        <app-map></app-map>
+    </mat-tab>
+</mat-tab-group>
+

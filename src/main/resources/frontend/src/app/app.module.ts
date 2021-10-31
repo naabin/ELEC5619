@@ -25,6 +25,8 @@ import {AngularFileUploaderModule} from "angular-file-uploader";
 import { MapComponent } from './map/map.component';
 import { StripeGatewayComponent } from './stripe-gateway/stripe-gateway.component';
 import { SearchResultComponent } from './search-result/search-result.component';
+import {MatTabsModule} from '@angular/material/tabs';
+import { MatAutocompleteModule} from '@angular/material/autocomplete';
 
 @NgModule({
     declarations: [
@@ -53,7 +55,9 @@ import { SearchResultComponent } from './search-result/search-result.component';
         FontAwesomeModule,
         BsDropdownModule.forRoot(),
         HttpClientModule,
-        AngularFileUploaderModule
+        AngularFileUploaderModule,
+        MatTabsModule,
+        MatAutocompleteModule,
     ],
     providers: [{
         provide: HTTP_INTERCEPTORS,

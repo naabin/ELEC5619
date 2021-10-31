@@ -1,4 +1,4 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, OnInit } from '@angular/core';
 import * as L from 'leaflet';
 import "leaflet/dist/leaflet.css";
 
@@ -7,7 +7,7 @@ import "leaflet/dist/leaflet.css";
     templateUrl: './map.component.html',
     styleUrls: ['./map.component.css']
 })
-export class MapComponent implements AfterViewInit {
+export class MapComponent implements AfterViewInit, OnInit {
     private map:any;
 
     private initMap(): void {
@@ -32,8 +32,13 @@ export class MapComponent implements AfterViewInit {
     }
 
     constructor() { }
+    ngOnInit(): void {
+        this.initMap();
+    }
 
     ngAfterViewInit(): void {
         this.initMap();
     }
+
+
 }

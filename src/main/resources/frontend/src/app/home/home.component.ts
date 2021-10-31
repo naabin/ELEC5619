@@ -1,18 +1,23 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {ProductHttpService} from "../http/product.http.service";
 import {ProductDetail} from "../entities/ProductDetail";
-import {RentNavComponent} from "../rent-nav/rent-nav.component";
 import {NavServiceService} from "../rent-nav/nav-service.service";
 import { ItemService } from '../services/item-service/item.service';
+import * as L from 'leaflet';
+import "leaflet/dist/leaflet.css";
+import { FormControl, FormGroup } from '@angular/forms';
 import { Item } from '../entities/Item';
+import { BehaviorSubject } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
     selector: 'app-home',
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, AfterViewInit {
+    private map:any;
     searchedItemName = '';
 
     products: ProductDetail[] = [];
@@ -22,6 +27,28 @@ export class HomeComponent implements OnInit {
                 private itemService: ItemService,
                 private readonly _navService: NavServiceService) {
     }
+    ngAfterViewInit(): void {
+        this.initMap();
+    }
+
+    searchForm = new FormGroup({
+        search: new FormControl('')
+      });
+    searchedItems: Item[];
+    searching = false;
+
+    searchItems(searchQuery: string) {
+        const subject = new BehaviorSubject<string>(searchQuery);
+        subject.pipe(
+          switchMap((searchValue) => {
+            this.searching = true;
+            return this.itemService.getAllBySearchQuery(searchValue);
+          })
+        ).subscribe((data) => {
+          console.log(data);
+          this.searchedItems = data;
+        })
+      }
 
     ngOnInit(): void {
         this.itemService.getAllItems().subscribe(data => {
@@ -75,5 +102,26 @@ export class HomeComponent implements OnInit {
         console.log(item);
         if (item.images && item.images.length > 0) return item.images[0].imageUrl;
         else return null;
+    }
+
+    private initMap(): void {
+        this.map = L.map('map', {
+            center: [ 45.8282, -98.5795 ],
+            zoom: 3
+        });
+
+        const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 18,
+            minZoom: 3,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        });
+
+        tiles.addTo(this.map);
+
+        const marker1 = L.marker([39.8282, -101.5795])
+        marker1.addTo(this.map)
+
+        const marker2 = L.marker([46.8282, -101.5795])
+        marker2.addTo(this.map)
     }
 }
